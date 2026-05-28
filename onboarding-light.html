@@ -893,6 +893,23 @@
     }
     .net-node-ext { border-top-color: var(--accent); cursor: default; }
     .net-node-ext:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(123,45,184,0.16); }
+    .net-node-module {
+      position: absolute;
+      display: flex; flex-direction: column; align-items: center;
+      background: rgba(255,255,255,0.55);
+      border: 1.5px dashed rgba(123,45,184,0.5);
+      border-radius: 10px; padding: 7px 10px;
+      min-width: 72px; gap: 5px; cursor: default;
+      transition: transform 0.2s ease;
+    }
+    .net-node-module:hover { transform: translateY(-2px); }
+    .net-node-module .net-node-icon {
+      width: 28px; height: 28px; font-size: 11px;
+      background: rgba(123,45,184,0.15);
+      color: var(--accent); box-shadow: none;
+    }
+    .net-node-module .net-node-name { font-size: 13px; font-weight: 800; }
+    .net-node-module .net-node-desc { font-size: 11px; }
     .net-node-icon {
       width: 38px; height: 38px; flex-shrink: 0;
       background: linear-gradient(135deg, var(--accent-2), var(--accent));
@@ -990,22 +1007,22 @@
         <h2 class="section-title animate-2">Nosso <span>Ecossistema</span><br>de Sistemas</h2>
         <div class="divider animate-3"></div>
         <p class="subtitle animate-4" style="font-size:clamp(13px,1.3vw,15px); margin-bottom:20px;">
-          A Comando Log opera com uma plataforma dividida em <strong>Sistemas Internos</strong> — desenvolvidos pela própria equipe — e <strong>Sistemas Externos</strong> integrados para gestão financeira e de armazém.
+          A Comando Log opera com <strong>Sistemas Internos</strong> próprios — incluindo módulos especializados do NEXUS — e <strong>Sistemas Externos</strong> integrados para gestão financeira e de armazém.
         </p>
 
         <!-- Stat cards com counter animado -->
         <div class="animate-5" style="display:flex; gap:12px; margin-bottom:16px;">
           <div style="flex:1; background:var(--card-bg); border:1px solid var(--border-2); border-top:3px solid var(--accent-2); border-radius:var(--radius-sm); padding:16px 12px; text-align:center;">
-            <div class="stat-num" id="stat-internos">4</div>
-            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Internos</div>
+            <div class="stat-num" id="stat-internos">2</div>
+            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Sistemas</div>
           </div>
           <div style="flex:1; background:var(--card-bg); border:1px solid var(--border-2); border-top:3px solid var(--accent-2); border-radius:var(--radius-sm); padding:16px 12px; text-align:center;">
             <div class="stat-num" id="stat-externos">2</div>
-            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Externos</div>
+            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Módulos</div>
           </div>
           <div style="flex:1; background:var(--card-bg); border:1px solid var(--border-2); border-top:3px solid var(--accent-2); border-radius:var(--radius-sm); padding:16px 12px; text-align:center;">
-            <div class="stat-num" id="stat-total">6</div>
-            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Total</div>
+            <div class="stat-num" id="stat-total">3</div>
+            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Externos</div>
           </div>
         </div>
 
@@ -1034,8 +1051,8 @@
       <!-- ── DIREITA: circuit board network ── -->
       <div class="animate-6 net-diagram">
 
-        <!-- Logo Comando Log — topo do backbone (ponta superior) -->
-        <div style="position:absolute;left:49%;top:calc(18% - 64px);transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;">
+        <!-- Logo Comando Log — topo do backbone -->
+        <div style="position:absolute;left:49%;top:calc(8% - 64px);transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;">
           <div style="width:64px;height:64px;border-radius:50%;
                       background:linear-gradient(135deg,#E8D5F5,#F0E6FF);
                       display:flex;align-items:center;justify-content:center;
@@ -1045,8 +1062,8 @@
         </div>
 
         <!-- Labels de grupo -->
-        <div style="position:absolute;left:2%;top:13%;font-size:15px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--white);">INTERNOS</div>
-        <div style="position:absolute;right:0%;top:13%;font-size:15px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--white);text-align:right;">EXTERNOS</div>
+        <div style="position:absolute;left:2%;top:6%;font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--white);">INTERNOS</div>
+        <div style="position:absolute;right:0%;top:6%;font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--white);text-align:right;">EXTERNOS</div>
 
         <!-- SVG: circuit board connections -->
         <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1;"
@@ -1058,72 +1075,94 @@
             </filter>
           </defs>
 
-          <!-- Backbone base (abaixo da logo até o fim) -->
-          <line x1="49" y1="18" x2="49" y2="90" stroke="rgba(123,45,184,0.20)" stroke-width="1.2"/>
+          <!-- Backbone base -->
+          <line x1="49" y1="16" x2="49" y2="92" stroke="rgba(123,45,184,0.20)" stroke-width="1.2"/>
           <!-- Backbone scanner -->
-          <line x1="49" y1="18" x2="49" y2="90" stroke="#C44FD8" stroke-width="1.6"
+          <line x1="49" y1="16" x2="49" y2="92" stroke="#C44FD8" stroke-width="1.6"
                 stroke-dasharray="15 57" filter="url(#netGlow)"
                 style="animation:netScan 3s linear infinite;"/>
 
-          <!-- Branches esquerda — INTERNOS (roxo vivo) -->
-          <line x1="49" y1="28" x2="13" y2="28" stroke="#C44FD8" stroke-width="0.8"
+          <!-- Branch principal NEXUS -->
+          <line x1="49" y1="22" x2="13" y2="22" stroke="#C44FD8" stroke-width="0.9"
                 stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite;"/>
-          <line x1="49" y1="51" x2="13" y2="51" stroke="#C44FD8" stroke-width="0.8"
-                stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.3s;"/>
-          <line x1="49" y1="74" x2="13" y2="74" stroke="#C44FD8" stroke-width="0.8"
-                stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.6s;"/>
+          <!-- Conector vertical NEXUS → módulos -->
+          <line x1="13" y1="22" x2="13" y2="56" stroke="rgba(196,79,216,0.40)" stroke-width="0.7"
+                stroke-dasharray="1.5 2" style="animation:netFlow 1.4s linear infinite 0.2s;"/>
+          <!-- Sub-branch FARM ROUTE -->
+          <line x1="13" y1="38" x2="25" y2="38" stroke="rgba(196,79,216,0.55)" stroke-width="0.6"
+                stroke-dasharray="1.5 2" style="animation:netFlow 1.4s linear infinite 0.4s;"/>
+          <!-- Sub-branch VIEW STOCK -->
+          <line x1="13" y1="54" x2="25" y2="54" stroke="rgba(196,79,216,0.55)" stroke-width="0.6"
+                stroke-dasharray="1.5 2" style="animation:netFlow 1.4s linear infinite 0.6s;"/>
+          <!-- Branch principal RESERVE -->
+          <line x1="49" y1="74" x2="13" y2="74" stroke="#C44FD8" stroke-width="0.9"
+                stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.35s;"/>
 
-          <!-- Branches direita — EXTERNOS (roxo suave) -->
-          <line x1="49" y1="28" x2="87" y2="28" stroke="rgba(123,45,184,0.45)" stroke-width="0.8"
+          <!-- Branches direita — EXTERNOS -->
+          <line x1="49" y1="26" x2="87" y2="26" stroke="rgba(123,45,184,0.45)" stroke-width="0.8"
                 stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.15s;"/>
-          <line x1="49" y1="51" x2="87" y2="51" stroke="rgba(123,45,184,0.45)" stroke-width="0.8"
+          <line x1="49" y1="50" x2="87" y2="50" stroke="rgba(123,45,184,0.45)" stroke-width="0.8"
                 stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.45s;"/>
           <line x1="49" y1="74" x2="87" y2="74" stroke="rgba(123,45,184,0.45)" stroke-width="0.8"
                 stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.75s;"/>
 
-          <!-- Junction dots no backbone -->
-          <circle cx="49" cy="28" r="1.6" fill="rgba(123,45,184,0.90)"/>
-          <circle cx="49" cy="51" r="1.6" fill="rgba(123,45,184,0.90)"/>
+          <!-- Junction dots backbone -->
+          <circle cx="49" cy="22" r="1.6" fill="rgba(123,45,184,0.90)"/>
           <circle cx="49" cy="74" r="1.6" fill="rgba(123,45,184,0.90)"/>
-          <!-- Endpoint dots esquerda -->
-          <circle cx="13" cy="28" r="1.3" fill="rgba(123,45,184,0.55)"/>
-          <circle cx="13" cy="51" r="1.3" fill="rgba(123,45,184,0.55)"/>
+          <!-- Junction dots módulos (no conector vertical) -->
+          <circle cx="13" cy="38" r="1.2" fill="rgba(196,79,216,0.70)"/>
+          <circle cx="13" cy="54" r="1.2" fill="rgba(196,79,216,0.70)"/>
+          <!-- Endpoint dots internos -->
+          <circle cx="13" cy="22" r="1.3" fill="rgba(123,45,184,0.55)"/>
           <circle cx="13" cy="74" r="1.3" fill="rgba(123,45,184,0.55)"/>
-          <!-- Endpoint dots direita -->
-          <circle cx="87" cy="28" r="1.3" fill="rgba(123,45,184,0.38)"/>
-          <circle cx="87" cy="51" r="1.3" fill="rgba(123,45,184,0.38)"/>
+          <!-- Endpoint dots módulos -->
+          <circle cx="25" cy="38" r="1.0" fill="rgba(196,79,216,0.45)"/>
+          <circle cx="25" cy="54" r="1.0" fill="rgba(196,79,216,0.45)"/>
+          <!-- Junction dots externos -->
+          <circle cx="49" cy="26" r="1.6" fill="rgba(123,45,184,0.70)"/>
+          <circle cx="49" cy="50" r="1.6" fill="rgba(123,45,184,0.70)"/>
+          <!-- Endpoint dots externos -->
+          <circle cx="87" cy="26" r="1.3" fill="rgba(123,45,184,0.38)"/>
+          <circle cx="87" cy="50" r="1.3" fill="rgba(123,45,184,0.38)"/>
           <circle cx="87" cy="74" r="1.3" fill="rgba(123,45,184,0.38)"/>
         </svg>
 
-        <!-- ── INTERNOS — esquerda ── -->
-        <div class="net-node animate-3" style="left:2%;top:18%;cursor:default;">
+        <!-- ── INTERNOS — sistemas principais ── -->
+        <div class="net-node animate-3" style="left:2%;top:12%;cursor:default;">
           <div class="net-node-icon"><i class="fas fa-route"></i></div>
           <div class="net-node-name">NEXUS</div>
           <div class="net-node-desc">Dashboard central</div>
         </div>
-        <div class="net-node animate-3" style="left:2%;top:42%;cursor:default;">
+        <div class="net-node animate-3" style="left:2%;top:64%;cursor:default;">
           <div class="net-node-icon"><i class="fas fa-calendar-check"></i></div>
           <div class="net-node-name">RESERVE</div>
           <div class="net-node-desc">Portaria</div>
         </div>
-        <div class="net-node animate-3" style="left:2%;top:66%;cursor:default;">
+
+        <!-- ── MÓDULOS NEXUS — sub-nós ── -->
+        <div class="net-node-module animate-3" style="left:16%;top:28%;">
           <div class="net-node-icon"><i class="fas fa-map-marked-alt"></i></div>
           <div class="net-node-name">FARM ROUTE</div>
           <div class="net-node-desc">Rotas</div>
         </div>
+        <div class="net-node-module animate-3" style="left:16%;top:44%;">
+          <div class="net-node-icon"><i class="fas fa-boxes"></i></div>
+          <div class="net-node-name">VIEW STOCK</div>
+          <div class="net-node-desc">Estoque</div>
+        </div>
 
         <!-- ── EXTERNOS — direita ── -->
-        <div class="net-node net-node-ext animate-4" style="right:0;top:18%;">
+        <div class="net-node net-node-ext animate-4" style="right:0;top:16%;">
           <div class="net-node-icon"><i class="fas fa-warehouse"></i></div>
           <div class="net-node-name">TOTVS WMS</div>
           <div class="net-node-desc">Armazém</div>
         </div>
-        <div class="net-node net-node-ext animate-4" style="right:0;top:42%;">
+        <div class="net-node net-node-ext animate-4" style="right:0;top:40%;">
           <div class="net-node-icon"><i class="fas fa-landmark"></i></div>
           <div class="net-node-name">TOTVS ERP</div>
           <div class="net-node-desc">Gestão empresarial</div>
         </div>
-        <div class="net-node net-node-ext animate-4" style="right:0;top:66%;">
+        <div class="net-node net-node-ext animate-4" style="right:0;top:64%;">
           <div class="net-node-icon"><i class="fas fa-handshake"></i></div>
           <div class="net-node-name">VIA NEXXUS</div>
           <div class="net-node-desc">Ofertas de carga</div>
@@ -1224,31 +1263,38 @@
         </div>
 
         <!-- Módulos NEXUS -->
-        <div class="animate-card-3" style="background:linear-gradient(135deg,rgba(123,45,184,0.12),rgba(106,27,154,0.18)); border:1px solid rgba(123,45,184,0.45); border-radius:12px; padding:14px 16px;">
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:12px; display:flex; align-items:center; gap:7px;">
+        <div class="animate-card-3" style="background:linear-gradient(135deg,rgba(123,45,184,0.10),rgba(106,27,154,0.16)); border:1px solid rgba(123,45,184,0.40); border-radius:14px; padding:16px 18px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:14px; display:flex; align-items:center; gap:7px;">
             <i class="fas fa-puzzle-piece"></i> Módulos NEXUS
           </div>
-          <div style="display:flex; gap:10px;">
-            <div onclick="goToSlide(5)" style="flex:1; display:flex; align-items:center; gap:11px; background:rgba(255,255,255,0.7); border:1px solid rgba(123,45,184,0.3); border-radius:9px; padding:11px 13px; cursor:pointer; transition:all 0.2s ease;" onmouseenter="this.style.background='rgba(123,45,184,0.12)';this.style.borderColor='var(--accent-2)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.background='rgba(255,255,255,0.7)';this.style.borderColor='rgba(123,45,184,0.3)';this.style.transform='translateY(0)'">
-              <div style="width:34px; height:34px; border-radius:8px; background:linear-gradient(135deg,var(--accent-2),var(--accent)); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 10px rgba(123,45,184,0.3);">
-                <i class="fas fa-map-marked-alt" style="color:#fff; font-size:13px;"></i>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+
+            <!-- FARM ROUTE -->
+            <div onclick="goToSlide(5)" style="display:flex; align-items:center; gap:14px; background:rgba(255,255,255,0.75); border:1px solid rgba(123,45,184,0.25); border-radius:11px; padding:14px 16px; cursor:pointer; transition:all 0.22s ease;" onmouseenter="this.style.background='rgba(123,45,184,0.10)';this.style.borderColor='rgba(123,45,184,0.5)';this.style.transform='translateX(4px)'" onmouseleave="this.style.background='rgba(255,255,255,0.75)';this.style.borderColor='rgba(123,45,184,0.25)';this.style.transform='translateX(0)'">
+              <div style="width:42px; height:42px; border-radius:10px; background:linear-gradient(135deg,var(--accent-2),var(--accent)); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 12px rgba(123,45,184,0.30);">
+                <i class="fas fa-map-marked-alt" style="color:#fff; font-size:16px;"></i>
               </div>
-              <div>
-                <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent-2);">Módulo</div>
-                <div style="font-size:14px; font-weight:800; color:var(--text-primary);">Farm Route</div>
+              <div style="flex:1;">
+                <div style="font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent-2); margin-bottom:2px;">Módulo</div>
+                <div style="font-size:15px; font-weight:900; color:var(--text-primary); line-height:1.2;">Farm Route</div>
+                <div style="font-size:12px; color:var(--white-70); margin-top:3px;">Rotas e endereços operacionais por filial</div>
               </div>
-              <i class="fas fa-arrow-right" style="margin-left:auto; font-size:11px; color:var(--accent-2); opacity:0.6;"></i>
+              <i class="fas fa-arrow-right" style="font-size:13px; color:var(--accent-2);"></i>
             </div>
-            <div onclick="goToSlide(6)" style="flex:1; display:flex; align-items:center; gap:11px; background:rgba(255,255,255,0.7); border:1px solid rgba(123,45,184,0.3); border-radius:9px; padding:11px 13px; cursor:pointer; transition:all 0.2s ease;" onmouseenter="this.style.background='rgba(123,45,184,0.12)';this.style.borderColor='var(--accent-2)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.background='rgba(255,255,255,0.7)';this.style.borderColor='rgba(123,45,184,0.3)';this.style.transform='translateY(0)'">
-              <div style="width:34px; height:34px; border-radius:8px; background:linear-gradient(135deg,var(--accent-2),var(--accent)); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 10px rgba(123,45,184,0.3);">
-                <i class="fas fa-boxes" style="color:#fff; font-size:13px;"></i>
+
+            <!-- VIEW STOCK -->
+            <div onclick="goToSlide(6)" style="display:flex; align-items:center; gap:14px; background:rgba(255,255,255,0.75); border:1px solid rgba(123,45,184,0.25); border-radius:11px; padding:14px 16px; cursor:pointer; transition:all 0.22s ease;" onmouseenter="this.style.background='rgba(123,45,184,0.10)';this.style.borderColor='rgba(123,45,184,0.5)';this.style.transform='translateX(4px)'" onmouseleave="this.style.background='rgba(255,255,255,0.75)';this.style.borderColor='rgba(123,45,184,0.25)';this.style.transform='translateX(0)'">
+              <div style="width:42px; height:42px; border-radius:10px; background:linear-gradient(135deg,var(--accent-2),var(--accent)); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 12px rgba(123,45,184,0.30);">
+                <i class="fas fa-boxes" style="color:#fff; font-size:16px;"></i>
               </div>
-              <div>
-                <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent-2);">Módulo</div>
-                <div style="font-size:14px; font-weight:800; color:var(--text-primary);">View Stock</div>
+              <div style="flex:1;">
+                <div style="font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent-2); margin-bottom:2px;">Módulo</div>
+                <div style="font-size:15px; font-weight:900; color:var(--text-primary); line-height:1.2;">View Stock</div>
+                <div style="font-size:12px; color:var(--white-70); margin-top:3px;">Visibilidade total do estoque em tempo real</div>
               </div>
-              <i class="fas fa-arrow-right" style="margin-left:auto; font-size:11px; color:var(--accent-2); opacity:0.6;"></i>
+              <i class="fas fa-arrow-right" style="font-size:13px; color:var(--accent-2);"></i>
             </div>
+
           </div>
         </div>
 
