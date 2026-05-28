@@ -82,11 +82,23 @@
       width: 180px; height: auto;
       animation: splashPop 0.7s cubic-bezier(0.22,1,0.36,1) both;
     }
+    #splash-welcome {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px; font-weight: 800; color: var(--accent);
+      text-align: center; line-height: 1.35;
+      animation: fadeUp 0.5s ease 0.35s both;
+    }
     #splash-label {
       font-family: 'Inter', sans-serif;
-      font-size: 13px; font-weight: 700; letter-spacing: 4px;
-      text-transform: uppercase; color: var(--accent-3);
-      animation: fadeUp 0.5s ease 0.4s both;
+      font-size: 13px; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--accent-3); opacity: 0.75;
+      text-align: center;
+      animation: fadeUp 0.5s ease 0.55s both;
+    }
+    #splash-divider {
+      width: 48px; height: 3px; border-radius: 99px;
+      background: linear-gradient(90deg, var(--accent-2), var(--accent-3));
+      animation: fadeUp 0.4s ease 0.45s both;
     }
     @keyframes splashPop {
       from { opacity: 0; transform: scale(0.8); }
@@ -1766,7 +1778,7 @@
     setTimeout(() => {
       splash.classList.add('splash-hide');
       setTimeout(() => { splash.style.display = 'none'; }, 650);
-    }, 2000);
+    }, 3500);
   });
 
   // Progress bar
@@ -1889,7 +1901,9 @@
 
 <div id="splash">
   <img id="splash-logo" src="logos/LOGO ROXO COMANDO.png" alt="Comando Log" />
-  <div id="splash-label">Onboarding Interativo</div>
+  <div id="splash-welcome">Seja bem-vindo ao<br>Onboarding Interativo</div>
+  <div id="splash-divider"></div>
+  <div id="splash-label">Sistemas Comando Log</div>
 </div>
 
 <div id="truck-wrap">
