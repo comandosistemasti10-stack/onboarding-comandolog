@@ -608,6 +608,32 @@
       min-width: 42px; text-align: center;
     }
 
+    /* ─── PRESENTATION MODE ─── */
+    #present-btn {
+      position: fixed; top: 24px; right: 72px; z-index: 100;
+      width: 36px; height: 36px;
+      background: var(--white-08);
+      border: 1px solid var(--border-2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--white-70); font-size: 13px;
+      transition: all 0.25s;
+    }
+    #present-btn:hover { background: var(--accent); border-color: var(--accent); color: white; }
+    #present-toast {
+      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(12px);
+      background: rgba(26,10,46,0.88); color: #fff;
+      font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 9px 20px; border-radius: 99px;
+      opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none; z-index: 400;
+      backdrop-filter: blur(6px);
+    }
+    #present-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    body.presentation-mode #dots { opacity: 0; pointer-events: none; }
+    body.presentation-mode #progress-bar { opacity: 0; }
+    body.presentation-mode #present-btn { background: var(--accent); border-color: var(--accent); color: white; }
+
     /* ─── FULLSCREEN BTN ─── */
     #fullscreen-btn {
       position: fixed; top: 24px; right: 28px; z-index: 100;
@@ -661,7 +687,7 @@
       .eco-highlight { font-size: 14px !important; }
       #slide-3 .eco-highlight, #slide-8 .eco-highlight { font-size: 15px !important; }
       .bullets li { font-size: 13px !important; }
-      #fullscreen-btn { display: none; }
+      #fullscreen-btn, #present-btn { display: none; }
     }
     @media (max-width: 480px) {
       h1.hero { font-size: 32px !important; }
@@ -885,7 +911,9 @@
 <body>
 
 <div id="progress-bar"></div>
+<button id="present-btn" title="Modo apresentação (P)"><i class="fas fa-tv"></i></button>
 <button id="fullscreen-btn" title="Tela cheia"><i class="fas fa-expand"></i></button>
+<div id="present-toast"></div>
 <div id="global-logo" style="position:fixed; top:18px; left:28px; z-index:100; pointer-events:none;">
   <img src="logos/LOGO ROXO COMANDO.png" alt="Comando Log" style="height:30px; width:auto; object-fit:contain;" />
 </div>
@@ -1865,6 +1893,29 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') navigate(1);
     if (e.key === 'ArrowLeft')  navigate(-1);
+  });
+
+  /* ── PRESENTATION MODE ── */
+  const presentBtn   = document.getElementById('present-btn');
+  const presentToast = document.getElementById('present-toast');
+  let toastTimer;
+
+  function togglePresentationMode(on) {
+    document.body.classList.toggle('presentation-mode', on);
+    const active = document.body.classList.contains('presentation-mode');
+    presentToast.textContent = active ? 'Modo Apresentação Ativado' : 'Modo Apresentação Desativado';
+    presentToast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => presentToast.classList.remove('show'), 2000);
+  }
+
+  presentBtn.addEventListener('click', () => {
+    togglePresentationMode(!document.body.classList.contains('presentation-mode'));
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'p' || e.key === 'P') togglePresentationMode(!document.body.classList.contains('presentation-mode'));
   });
 
   /* ── FULLSCREEN ── */
