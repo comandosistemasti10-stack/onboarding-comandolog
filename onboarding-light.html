@@ -881,7 +881,7 @@
       border-top: 3px solid var(--accent-2);
       border-radius: 10px;
       padding: 14px 10px 12px;
-      z-index: 2;
+      z-index: 10;
       cursor: pointer;
       box-shadow: 0 3px 14px rgba(123,45,184,0.10);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -901,6 +901,7 @@
       border-radius: 10px; padding: 7px 10px;
       min-width: 72px; gap: 5px; cursor: default;
       transition: transform 0.2s ease;
+      z-index: 10;
     }
     .net-node-module:hover { transform: translateY(-2px); }
     .net-node-module .net-node-icon {
@@ -1014,7 +1015,7 @@
         <div class="animate-5" style="display:flex; gap:12px; margin-bottom:16px;">
           <div style="flex:1; background:var(--card-bg); border:1px solid var(--border-2); border-top:3px solid var(--accent-2); border-radius:var(--radius-sm); padding:16px 12px; text-align:center;">
             <div class="stat-num" id="stat-internos">2</div>
-            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Sistemas</div>
+            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Internos</div>
           </div>
           <div style="flex:1; background:var(--card-bg); border:1px solid var(--border-2); border-top:3px solid var(--accent-2); border-radius:var(--radius-sm); padding:16px 12px; text-align:center;">
             <div class="stat-num" id="stat-externos">2</div>
@@ -1076,93 +1077,81 @@
           </defs>
 
           <!-- Backbone base -->
-          <line x1="49" y1="16" x2="49" y2="92" stroke="rgba(123,45,184,0.20)" stroke-width="1.2"/>
+          <line x1="49" y1="15" x2="49" y2="90" stroke="rgba(123,45,184,0.18)" stroke-width="1.2"/>
           <!-- Backbone scanner -->
-          <line x1="49" y1="16" x2="49" y2="92" stroke="#C44FD8" stroke-width="1.6"
+          <line x1="49" y1="15" x2="49" y2="90" stroke="#C44FD8" stroke-width="1.6"
                 stroke-dasharray="15 57" filter="url(#netGlow)"
                 style="animation:netScan 3s linear infinite;"/>
 
-          <!-- Branch principal NEXUS -->
-          <line x1="49" y1="22" x2="13" y2="22" stroke="#C44FD8" stroke-width="0.9"
+          <!-- Branch NEXUS → backbone (animada, termina na borda direita do card) -->
+          <line x1="49" y1="17" x2="27" y2="17" stroke="#C44FD8" stroke-width="0.9"
                 stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite;"/>
-          <!-- Conector vertical NEXUS → módulos -->
-          <line x1="13" y1="22" x2="13" y2="56" stroke="rgba(196,79,216,0.40)" stroke-width="0.7"
-                stroke-dasharray="1.5 2" style="animation:netFlow 1.4s linear infinite 0.2s;"/>
-          <!-- Sub-branch FARM ROUTE -->
-          <line x1="13" y1="38" x2="25" y2="38" stroke="rgba(196,79,216,0.55)" stroke-width="0.6"
-                stroke-dasharray="1.5 2" style="animation:netFlow 1.4s linear infinite 0.4s;"/>
-          <!-- Sub-branch VIEW STOCK -->
-          <line x1="13" y1="54" x2="25" y2="54" stroke="rgba(196,79,216,0.55)" stroke-width="0.6"
-                stroke-dasharray="1.5 2" style="animation:netFlow 1.4s linear infinite 0.6s;"/>
-          <!-- Branch principal RESERVE -->
-          <line x1="49" y1="74" x2="13" y2="74" stroke="#C44FD8" stroke-width="0.9"
+          <!-- Conector vertical centro NEXUS → T-junction (passa por baixo do card) -->
+          <line x1="16" y1="17" x2="16" y2="43" stroke="rgba(196,79,216,0.55)" stroke-width="0.8"/>
+          <!-- Ramo esquerdo → FARM ROUTE (sólido, espaçamento igual) -->
+          <line x1="16" y1="43" x2="7" y2="43" stroke="rgba(196,79,216,0.55)" stroke-width="0.7"/>
+          <!-- Ramo direito → VIEW STOCK (sólido, espaçamento igual) -->
+          <line x1="16" y1="43" x2="27" y2="43" stroke="rgba(196,79,216,0.55)" stroke-width="0.7"/>
+
+          <!-- Branch RESERVE → backbone (animada, termina na borda direita do card) -->
+          <line x1="49" y1="67" x2="27" y2="67" stroke="#C44FD8" stroke-width="0.9"
                 stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.35s;"/>
 
-          <!-- Branches direita — EXTERNOS -->
-          <line x1="49" y1="26" x2="87" y2="26" stroke="rgba(123,45,184,0.45)" stroke-width="0.8"
+          <!-- Branches EXTERNOS (animadas) -->
+          <line x1="49" y1="17" x2="87" y2="17" stroke="rgba(123,45,184,0.42)" stroke-width="0.8"
                 stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.15s;"/>
-          <line x1="49" y1="50" x2="87" y2="50" stroke="rgba(123,45,184,0.45)" stroke-width="0.8"
+          <line x1="49" y1="44" x2="87" y2="44" stroke="rgba(123,45,184,0.42)" stroke-width="0.8"
                 stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.45s;"/>
-          <line x1="49" y1="74" x2="87" y2="74" stroke="rgba(123,45,184,0.45)" stroke-width="0.8"
+          <line x1="49" y1="67" x2="87" y2="67" stroke="rgba(123,45,184,0.42)" stroke-width="0.8"
                 stroke-dasharray="2.5 2.5" style="animation:netFlow 1.1s linear infinite 0.75s;"/>
 
           <!-- Junction dots backbone -->
-          <circle cx="49" cy="22" r="1.6" fill="rgba(123,45,184,0.90)"/>
-          <circle cx="49" cy="74" r="1.6" fill="rgba(123,45,184,0.90)"/>
-          <!-- Junction dots módulos (no conector vertical) -->
-          <circle cx="13" cy="38" r="1.2" fill="rgba(196,79,216,0.70)"/>
-          <circle cx="13" cy="54" r="1.2" fill="rgba(196,79,216,0.70)"/>
-          <!-- Endpoint dots internos -->
-          <circle cx="13" cy="22" r="1.3" fill="rgba(123,45,184,0.55)"/>
-          <circle cx="13" cy="74" r="1.3" fill="rgba(123,45,184,0.55)"/>
-          <!-- Endpoint dots módulos -->
-          <circle cx="25" cy="38" r="1.0" fill="rgba(196,79,216,0.45)"/>
-          <circle cx="25" cy="54" r="1.0" fill="rgba(196,79,216,0.45)"/>
-          <!-- Junction dots externos -->
-          <circle cx="49" cy="26" r="1.6" fill="rgba(123,45,184,0.70)"/>
-          <circle cx="49" cy="50" r="1.6" fill="rgba(123,45,184,0.70)"/>
-          <!-- Endpoint dots externos -->
-          <circle cx="87" cy="26" r="1.3" fill="rgba(123,45,184,0.38)"/>
-          <circle cx="87" cy="50" r="1.3" fill="rgba(123,45,184,0.38)"/>
-          <circle cx="87" cy="74" r="1.3" fill="rgba(123,45,184,0.38)"/>
+          <circle cx="49" cy="17" r="1.6" fill="rgba(123,45,184,0.90)"/>
+          <circle cx="49" cy="44" r="1.6" fill="rgba(123,45,184,0.70)"/>
+          <circle cx="49" cy="67" r="1.6" fill="rgba(123,45,184,0.90)"/>
+          <!-- T-junction módulos -->
+          <circle cx="16" cy="43" r="1.4" fill="rgba(196,79,216,0.80)"/>
+          <!-- Endpoints módulos -->
+          <circle cx="7" cy="43" r="1.1" fill="rgba(196,79,216,0.55)"/>
+          <circle cx="27" cy="43" r="1.1" fill="rgba(196,79,216,0.55)"/>
         </svg>
 
         <!-- ── INTERNOS — sistemas principais ── -->
-        <div class="net-node animate-3" style="left:2%;top:12%;cursor:default;">
+        <div class="net-node animate-3" style="left:4%;top:10%;cursor:default;">
           <div class="net-node-icon"><i class="fas fa-route"></i></div>
           <div class="net-node-name">NEXUS</div>
           <div class="net-node-desc">Dashboard central</div>
         </div>
-        <div class="net-node animate-3" style="left:2%;top:64%;cursor:default;">
+        <div class="net-node animate-3" style="left:4%;top:60%;cursor:default;">
           <div class="net-node-icon"><i class="fas fa-calendar-check"></i></div>
           <div class="net-node-name">RESERVE</div>
           <div class="net-node-desc">Portaria</div>
         </div>
 
-        <!-- ── MÓDULOS NEXUS — sub-nós ── -->
-        <div class="net-node-module animate-3" style="left:16%;top:28%;">
+        <!-- ── MÓDULOS NEXUS — lado a lado ── -->
+        <div class="net-node-module animate-3" style="left:0%;top:38%;">
           <div class="net-node-icon"><i class="fas fa-map-marked-alt"></i></div>
           <div class="net-node-name">FARM ROUTE</div>
           <div class="net-node-desc">Rotas</div>
         </div>
-        <div class="net-node-module animate-3" style="left:16%;top:44%;">
+        <div class="net-node-module animate-3" style="left:20%;top:38%;">
           <div class="net-node-icon"><i class="fas fa-boxes"></i></div>
           <div class="net-node-name">VIEW STOCK</div>
           <div class="net-node-desc">Estoque</div>
         </div>
 
         <!-- ── EXTERNOS — direita ── -->
-        <div class="net-node net-node-ext animate-4" style="right:0;top:16%;">
+        <div class="net-node net-node-ext animate-4" style="right:0;top:10%;">
           <div class="net-node-icon"><i class="fas fa-warehouse"></i></div>
           <div class="net-node-name">TOTVS WMS</div>
           <div class="net-node-desc">Armazém</div>
         </div>
-        <div class="net-node net-node-ext animate-4" style="right:0;top:40%;">
+        <div class="net-node net-node-ext animate-4" style="right:0;top:35%;">
           <div class="net-node-icon"><i class="fas fa-landmark"></i></div>
           <div class="net-node-name">TOTVS ERP</div>
           <div class="net-node-desc">Gestão empresarial</div>
         </div>
-        <div class="net-node net-node-ext animate-4" style="right:0;top:64%;">
+        <div class="net-node net-node-ext animate-4" style="right:0;top:60%;">
           <div class="net-node-icon"><i class="fas fa-handshake"></i></div>
           <div class="net-node-name">VIA NEXXUS</div>
           <div class="net-node-desc">Ofertas de carga</div>
@@ -1218,7 +1207,7 @@
       </div>
 
       <!-- ── DIREITA: 2 sys-cards + seção módulos ── -->
-      <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; flex-direction:column; gap:12px; padding-bottom:56px;">
 
         <!-- 01 · NEXUS -->
         <div class="sys-card-v2 animate-card-1" onclick="goToSlide(3)">
@@ -1319,7 +1308,6 @@
         <div class="badge animate-1"><i class="fas fa-circle-dot"></i> SISTEMA INTERNO</div>
         <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">NEXUS</h3>
-          <img src="logos/LOGO_NEXUS.svg" alt="NEXUS" class="animate-2" style="height:64px; width:auto; object-fit:contain; flex-shrink:0;" />
         </div>
         <p class="subtitle animate-3" style="margin-bottom:20px;">Rastreamento e visibilidade total da operação logística.</p>
         <div class="divider animate-3"></div>
@@ -1341,26 +1329,7 @@
             <div style="flex:1;"><div class="bullet-exp-header"><span>Integração completa</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
         </ul>
-        <div class="module-section animate-5">
-          <div class="module-section-label"><i class="fas fa-puzzle-piece"></i> &nbsp;Módulos</div>
-          <div class="module-row">
-            <div class="module-card" onclick="goToSlide(5)">
-              <div class="module-card-icon"><i class="fas fa-map-marked-alt"></i></div>
-              <div class="module-card-info">
-                <div class="module-card-tag">Módulo</div>
-                <div class="module-card-name">Farm Route</div>
-              </div>
-            </div>
-            <div class="module-card" onclick="goToSlide(6)">
-              <div class="module-card-icon"><i class="fas fa-boxes"></i></div>
-              <div class="module-card-info">
-                <div class="module-card-tag">Módulo</div>
-                <div class="module-card-name">View Stock</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="btn-group animate-5" style="margin-top:14px;">
+        <div class="btn-group animate-5">
           <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
           <button class="btn-secondary" onclick="goToSlide(2)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
@@ -1391,7 +1360,6 @@
         <div class="badge animate-1"><i class="fas fa-circle-dot"></i> SISTEMA INTERNO</div>
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">RESERVE</h3>
-          <img src="logos/Logo_Reserve_PNG.png" alt="RESERVE" class="animate-2" style="height:110px; width:auto; object-fit:contain; flex-shrink:0;" />
         </div>
         <p class="subtitle animate-3" style="margin-bottom:20px;">Organize filas, horários e portarias sem confusão.</p>
         <div class="divider animate-3"></div>
@@ -1444,7 +1412,6 @@
         <div class="badge animate-1"><i class="fas fa-puzzle-piece"></i> MÓDULO NEXUS</div>
         <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">FARM ROUTE</h3>
-          <img src="logos/Logo_FarmRoute_PNG.png" alt="FARM ROUTE" class="animate-2" style="height:92px; width:auto; object-fit:contain; flex-shrink:0; filter:brightness(0);" />
         </div>
         <p class="subtitle animate-3" style="margin-bottom:20px;">Controle estruturado de rotas e endereços operacionais.</p>
         <div class="divider animate-3"></div>
@@ -1468,7 +1435,7 @@
         </ul>
         <div class="btn-group animate-5">
           <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
-          <button class="btn-secondary" onclick="goToSlide(3)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+          <button class="btn-secondary" onclick="goToSlide(2)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
       <div class="right-col animate-6">
@@ -1520,7 +1487,7 @@
         </ul>
         <div class="btn-group animate-5">
           <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR MÓDULO</button>
-          <button class="btn-secondary" onclick="goToSlide(3)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+          <button class="btn-secondary" onclick="goToSlide(2)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
       <div class="right-col animate-6">
@@ -2004,9 +1971,9 @@
   /* ── COUNTER ANIMATION ── */
   function animateCounters() {
     const targets = [
-      { id: 'stat-internos', target: 3 },
-      { id: 'stat-externos', target: 3 },
-      { id: 'stat-total',    target: 6 },
+      { id: 'stat-internos', target: 2 },
+      { id: 'stat-externos', target: 2 },
+      { id: 'stat-total',    target: 2 },
     ];
     targets.forEach(({ id, target }) => {
       const el = document.getElementById(id);
