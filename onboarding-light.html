@@ -717,6 +717,21 @@
     }
     #fullscreen-btn:hover { background: var(--white-15); color: white; }
 
+    /* ─── LANGUAGE SWITCHER ─── */
+    #lang-switcher {
+      position: fixed; top: 24px; right: 120px; z-index: 100;
+      display: flex; align-items: center;
+      background: var(--white-08); border: 1px solid var(--border-2);
+      border-radius: 8px; overflow: hidden;
+    }
+    #lang-switcher button {
+      padding: 0 11px; height: 36px; background: none; border: none;
+      cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 1px;
+      color: var(--white-70); font-family: inherit; transition: all 0.2s;
+    }
+    #lang-switcher button.lang-active { background: var(--accent); color: #fff; }
+    #lang-switcher button:hover:not(.lang-active) { background: var(--white-15); color: #fff; }
+
     /* ─── PROGRESS BAR ─── */
     #progress-bar {
       position: fixed; top: 0; left: 0; z-index: 200;
@@ -999,6 +1014,10 @@
 <body>
 
 <div id="progress-bar"></div>
+<div id="lang-switcher">
+  <button id="lang-pt" onclick="setLang('pt')" class="lang-active">PT</button>
+  <button id="lang-en" onclick="setLang('en')">EN</button>
+</div>
 <button id="present-btn" title="Modo apresentação (P)"><i class="fas fa-tv"></i></button>
 <button id="fullscreen-btn" title="Tela cheia"><i class="fas fa-expand"></i></button>
 <div id="present-toast"></div>
@@ -1023,11 +1042,11 @@
                style="height:110px; width:auto; object-fit:contain; display:block;" />
         </div>
         <div style="margin-top:160px;">
-          <div class="hero-eyebrow animate-2">ONBOARDING INTERATIVO</div>
+          <div class="hero-eyebrow animate-2" data-i18n="s1.eyebrow">ONBOARDING INTERATIVO</div>
           <h1 class="hero animate-3">SISTEMAS<br><span>COMANDO LOG</span></h1>
-          <p class="hero-kicker animate-4">Conheça cada sistema e sua função principal dentro do ecossistema logístico.</p>
+          <p class="hero-kicker animate-4" data-i18n="s1.kicker">Conheça cada sistema e sua função principal dentro do ecossistema logístico.</p>
           <div class="btn-group" style="margin-top:28px;">
-            <button class="btn-primary" onclick="navigate(1)"><i class="fas fa-arrow-right"></i> COMEÇAR</button>
+            <button class="btn-primary" onclick="navigate(1)" data-i18n="s1.cta"><i class="fas fa-arrow-right"></i> COMEÇAR</button>
           </div>
         </div>
       </div>
@@ -1040,7 +1059,7 @@
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
 
-      <span>SISTEMAS LOGÍSTICOS INTEGRADOS</span>
+      <span data-i18n="s1.footer">SISTEMAS LOGÍSTICOS INTEGRADOS</span>
     </div>
   </div>
 
@@ -1056,10 +1075,10 @@
 
       <!-- ── ESQUERDA ── -->
       <div style="display:flex; flex-direction:column; justify-content:center; gap:0;">
-        <div class="tag animate-1">PLATAFORMA</div>
-        <h2 class="section-title animate-2">Nosso <span>Ecossistema</span><br>de Sistemas</h2>
+        <div class="tag animate-1" data-i18n="s2.tag">PLATAFORMA</div>
+        <h2 class="section-title animate-2" data-i18n="s2.title">Nosso <span>Ecossistema</span><br>de Sistemas</h2>
         <div class="divider animate-3"></div>
-        <p class="subtitle animate-4" style="font-size:clamp(13px,1.3vw,15px); margin-bottom:20px;">
+        <p class="subtitle animate-4" style="font-size:clamp(13px,1.3vw,15px); margin-bottom:20px;" data-i18n="s2.subtitle">
           A Comando Log opera com <strong>Sistemas Internos</strong> próprios — incluindo módulos especializados do NEXUS — e <strong>Sistemas Externos</strong> integrados para gestão financeira e de armazém.
         </p>
 
@@ -1067,15 +1086,15 @@
         <div class="animate-5" style="display:flex; gap:12px; margin-bottom:16px;">
           <div style="flex:1; background:var(--card-bg); border:1px solid var(--border-2); border-top:3px solid var(--accent-2); border-radius:var(--radius-sm); padding:16px 12px; text-align:center;">
             <div class="stat-num" id="stat-internos">2</div>
-            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Internos</div>
+            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;" data-i18n="s2.stat1">Internos</div>
           </div>
           <div style="flex:1; background:var(--card-bg); border:1px solid var(--border-2); border-top:3px solid var(--accent-2); border-radius:var(--radius-sm); padding:16px 12px; text-align:center;">
             <div class="stat-num" id="stat-externos">2</div>
-            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Módulos</div>
+            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;" data-i18n="s2.stat2">Módulos</div>
           </div>
           <div style="flex:1; background:var(--card-bg); border:1px solid var(--border-2); border-top:3px solid var(--accent-2); border-radius:var(--radius-sm); padding:16px 12px; text-align:center;">
             <div class="stat-num" id="stat-total">3</div>
-            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;">Externos</div>
+            <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white-70); margin-top:4px;" data-i18n="s2.stat3">Externos</div>
           </div>
         </div>
 
@@ -1083,21 +1102,21 @@
         <div class="animate-5" style="display:flex; flex-direction:column; gap:8px; margin-bottom:22px;">
           <div class="eco-highlight">
             <i class="fas fa-globe"></i>
-            <span>Acesso via browser e mobile</span>
+            <span data-i18n="s2.hl1">Acesso via browser e mobile</span>
           </div>
           <div class="eco-highlight">
             <i class="fas fa-bolt"></i>
-            <span>Dados em tempo real</span>
+            <span data-i18n="s2.hl2">Dados em tempo real</span>
           </div>
           <div class="eco-highlight">
             <i class="fas fa-headset"></i>
-            <span>Suporte técnico incluído</span>
+            <span data-i18n="s2.hl3">Suporte técnico incluído</span>
           </div>
         </div>
 
         <div class="btn-group animate-6">
-          <button class="btn-secondary" onclick="navigate(-1)"><i class="fas fa-arrow-left"></i> ANTERIOR</button>
-          <button class="btn-primary" onclick="navigate(1)">PRÓXIMO <i class="fas fa-arrow-right"></i></button>
+          <button class="btn-secondary" onclick="navigate(-1)" data-i18n="nav.prev"><i class="fas fa-arrow-left"></i> ANTERIOR</button>
+          <button class="btn-primary" onclick="navigate(1)" data-i18n="nav.next">PRÓXIMO <i class="fas fa-arrow-right"></i></button>
         </div>
       </div>
 
@@ -1115,8 +1134,8 @@
         </div>
 
         <!-- Labels de grupo -->
-        <div style="position:absolute;left:2%;top:6%;font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--white);">INTERNOS</div>
-        <div style="position:absolute;right:0%;top:6%;font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--white);text-align:right;">EXTERNOS</div>
+        <div style="position:absolute;left:2%;top:6%;font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--white);" data-i18n="s2.label.int">INTERNOS</div>
+        <div style="position:absolute;right:0%;top:6%;font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--white);text-align:right;" data-i18n="s2.label.ext">EXTERNOS</div>
 
         <!-- SVG: circuit board connections -->
         <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1;"
@@ -1229,10 +1248,10 @@
 
       <!-- ── ESQUERDA: header + info ── -->
       <div style="display:flex; flex-direction:column; justify-content:center; gap:0;">
-        <div class="tag animate-1">INTERNOS</div>
-        <h2 class="section-title animate-2"><span>Sistemas</span><br>Internos</h2>
+        <div class="tag animate-1" data-i18n="s3.tag">INTERNOS</div>
+        <h2 class="section-title animate-2" data-i18n="s3.title"><span>Sistemas</span><br>Internos</h2>
         <div class="divider animate-3"></div>
-        <p class="subtitle animate-4" style="font-size:clamp(13px,1.3vw,15px); margin-bottom:22px;">
+        <p class="subtitle animate-4" style="font-size:clamp(13px,1.3vw,15px); margin-bottom:22px;" data-i18n="s3.subtitle">
           Ferramentas próprias da Comando Log para dominar cada etapa da operação logística.
         </p>
 
@@ -1240,21 +1259,21 @@
         <div class="animate-4" style="display:flex; flex-direction:column; gap:8px; margin-bottom:28px;">
           <div class="eco-highlight">
             <i class="fas fa-layer-group"></i>
-            <span>2 sistemas + 2 módulos NEXUS</span>
+            <span data-i18n="s3.hl1">2 sistemas + 2 módulos NEXUS</span>
           </div>
           <div class="eco-highlight">
             <i class="fas fa-bolt"></i>
-            <span>100% integrados entre si em tempo real</span>
+            <span data-i18n="s3.hl2">100% integrados entre si em tempo real</span>
           </div>
           <div class="eco-highlight">
             <i class="fas fa-lock"></i>
-            <span>Acesso exclusivo para equipe Comando Log</span>
+            <span data-i18n="s3.hl3">Acesso exclusivo para equipe Comando Log</span>
           </div>
         </div>
 
         <div class="btn-group animate-5" style="margin-top:0;">
-          <button class="btn-secondary" onclick="navigate(-1)"><i class="fas fa-arrow-left"></i> ANTERIOR</button>
-          <button class="btn-primary" onclick="goToSlide(7)"><i class="fas fa-plug"></i> EXTERNOS</button>
+          <button class="btn-secondary" onclick="navigate(-1)" data-i18n="nav.prev"><i class="fas fa-arrow-left"></i> ANTERIOR</button>
+          <button class="btn-primary" onclick="goToSlide(7)" data-i18n="s3.ext.btn"><i class="fas fa-plug"></i> EXTERNOS</button>
         </div>
       </div>
 
@@ -1266,19 +1285,19 @@
           <div class="sys-card-header">
             <div class="sys-card-icon"><i class="fas fa-route"></i></div>
             <div>
-              <div class="sys-card-tag">Dashboard</div>
+              <div class="sys-card-tag" data-i18n="s3.nexus.tag">Dashboard</div>
               <div class="sys-card-name">NEXUS</div>
             </div>
             <span class="sys-card-num">01</span>
           </div>
           <div class="sys-card-body">
-            <div class="sys-card-desc">Central de operações — CT-es, entregas e indicadores em tempo real.</div>
+            <div class="sys-card-desc" data-i18n="s3.nexus.desc">Central de operações — CT-es, entregas e indicadores em tempo real.</div>
             <ul style="margin:8px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:5px;">
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Consulta de CT-es e entregas em tempo real</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Indicadores operacionais e relatórios</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Integração financeira e operacional completa</li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s3.nexus.b1"> Consulta de CT-es e entregas em tempo real</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s3.nexus.b2"> Indicadores operacionais e relatórios</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s3.nexus.b3"> Integração financeira e operacional completa</span></li>
             </ul>
-            <div class="sys-card-cta">CONHECER <i class="fas fa-arrow-right"></i></div>
+            <div class="sys-card-cta" data-i18n="s3.cta">CONHECER <i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
@@ -1287,25 +1306,25 @@
           <div class="sys-card-header">
             <div class="sys-card-icon"><i class="fas fa-calendar-check"></i></div>
             <div>
-              <div class="sys-card-tag">Agendamento</div>
+              <div class="sys-card-tag" data-i18n="s3.reserve.tag">Agendamento</div>
               <div class="sys-card-name">RESERVE</div>
             </div>
             <span class="sys-card-num">02</span>
           </div>
           <div class="sys-card-body">
-            <div class="sys-card-desc">Gestão inteligente de portaria — slots de carga e descarga sem filas.</div>
+            <div class="sys-card-desc" data-i18n="s3.reserve.desc">Gestão inteligente de portaria — slots de carga e descarga sem filas.</div>
             <ul style="margin:8px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:5px;">
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Agendamento de horários com slots controlados</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Acompanhamento de motoristas e transportadoras</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Elimina filas e atrasos na portaria</li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s3.reserve.b1"> Agendamento de horários com slots controlados</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s3.reserve.b2"> Acompanhamento de motoristas e transportadoras</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s3.reserve.b3"> Elimina filas e atrasos na portaria</span></li>
             </ul>
-            <div class="sys-card-cta">CONHECER <i class="fas fa-arrow-right"></i></div>
+            <div class="sys-card-cta" data-i18n="s3.cta">CONHECER <i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
         <!-- Módulos NEXUS -->
         <div class="animate-card-3" style="background:linear-gradient(135deg,rgba(123,45,184,0.13),rgba(106,27,154,0.20)); border:1.5px solid rgba(123,45,184,0.50); border-radius:14px; padding:16px 18px; box-shadow:0 2px 14px rgba(123,45,184,0.12);">
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:14px; display:flex; align-items:center; gap:7px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:14px; display:flex; align-items:center; gap:7px;" data-i18n="s3.modules.label">
             <i class="fas fa-puzzle-piece"></i> Módulos NEXUS
           </div>
           <div style="display:flex; flex-direction:column; gap:10px;">
@@ -1316,9 +1335,9 @@
                 <i class="fas fa-map-marked-alt" style="color:#fff; font-size:16px;"></i>
               </div>
               <div style="flex:1;">
-                <div style="font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent-2); margin-bottom:2px;">Módulo</div>
-                <div style="font-size:15px; font-weight:900; color:var(--text-primary); line-height:1.2;">Farm Route</div>
-                <div style="font-size:12px; color:var(--white-70); margin-top:3px;">Rotas e endereços operacionais por filial</div>
+                <div style="font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent-2); margin-bottom:2px;" data-i18n="s3.mod.tag">Módulo</div>
+                <div style="font-size:15px; font-weight:900; color:var(--text-primary,#1A0A2E); line-height:1.2;">Farm Route</div>
+                <div style="font-size:12px; color:var(--white-70); margin-top:3px;" data-i18n="s3.fr.desc">Rotas e endereços operacionais por filial</div>
               </div>
             </div>
 
@@ -1328,9 +1347,9 @@
                 <i class="fas fa-boxes" style="color:#fff; font-size:16px;"></i>
               </div>
               <div style="flex:1;">
-                <div style="font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent-2); margin-bottom:2px;">Módulo</div>
-                <div style="font-size:15px; font-weight:900; color:var(--text-primary); line-height:1.2;">View Stock</div>
-                <div style="font-size:12px; color:var(--white-70); margin-top:3px;">Visibilidade total do estoque em tempo real</div>
+                <div style="font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent-2); margin-bottom:2px;" data-i18n="s3.mod.tag">Módulo</div>
+                <div style="font-size:15px; font-weight:900; color:var(--text-primary,#1A0A2E); line-height:1.2;">View Stock</div>
+                <div style="font-size:12px; color:var(--white-70); margin-top:3px;" data-i18n="s3.vs.desc">Visibilidade total do estoque em tempo real</div>
               </div>
             </div>
 
@@ -1341,7 +1360,7 @@
     </div>
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
-      <span>2 SISTEMAS INTERNOS · 2 MÓDULOS NEXUS</span>
+      <span data-i18n="s3.footer">2 SISTEMAS INTERNOS · 2 MÓDULOS NEXUS</span>
     </div>
   </div>
 
@@ -1355,33 +1374,33 @@
     <div class="grid-lines"></div>
     <div class="slide-inner split">
       <div class="left-col">
-        <div class="badge animate-1"><i class="fas fa-circle-dot"></i> SISTEMA INTERNO</div>
+        <div class="badge animate-1" data-i18n="badge.internal"><i class="fas fa-circle-dot"></i> SISTEMA INTERNO</div>
         <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">NEXUS</h3>
         </div>
-        <p class="subtitle animate-3" style="margin-bottom:20px;">Rastreamento e visibilidade total da operação logística.</p>
+        <p class="subtitle animate-3" style="margin-bottom:20px;" data-i18n="s4.subtitle">Rastreamento e visibilidade total da operação logística.</p>
         <div class="divider animate-3"></div>
         <ul class="bullets animate-4">
-          <li class="bullet-exp" onclick="openBulletModal('Acompanhe CT-es e entregas', 'Todas as Cartas de Transporte Eletrônicas e seus status ficam visíveis em tempo real no painel do NEXUS. Você acompanha cada entrega sem precisar consultar sistemas separados — tudo centralizado e atualizado automaticamente, do despacho até a confirmação.')">
+          <li class="bullet-exp" data-modal-key="n.b1" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Acompanhe CT-es e entregas</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Acesse comprovantes e documentos', 'Comprovantes de entrega, notas fiscais e documentos operacionais ficam disponíveis em um único lugar no NEXUS. Chega de procurar em e-mails ou pastas físicas — qualquer documento pode ser localizado e baixado em segundos, por qualquer membro autorizado da equipe.')">
+          <li class="bullet-exp" data-modal-key="n.b2" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Acesse comprovantes e documentos</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Visualize indicadores e relatórios', 'O NEXUS oferece dashboards com os principais indicadores da operação: volume entregue, taxa de ocorrências, desempenho por região e muito mais. Esses dados são apresentados de forma visual e acessível, apoiando decisões rápidas e estratégicas no dia a dia.')">
+          <li class="bullet-exp" data-modal-key="n.b3" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Visualize indicadores e relatórios</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Integração completa', 'O NEXUS conecta os dados operacionais diretamente com o módulo financeiro, eliminando retrabalho e garantindo consistência das informações em toda a empresa. Uma ação no operacional reflete automaticamente no financeiro — sem lançamentos manuais.')">
+          <li class="bullet-exp" data-modal-key="n.b4" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Integração completa</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
         </ul>
         <div class="btn-group animate-5">
-          <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
-          <button class="btn-secondary" onclick="goToSlide(2)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+          <button class="btn-dark" data-i18n="btn.view.sys"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
+          <button class="btn-secondary" onclick="goToSlide(2)" data-i18n="btn.back"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
       <div class="right-col animate-6">
@@ -1393,7 +1412,7 @@
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
 
-      <span>NEXUS — SISTEMA INTERNO</span>
+      <span data-i18n="s4.footer">NEXUS — SISTEMA INTERNO</span>
     </div>
   </div>
 
@@ -1407,33 +1426,33 @@
     <div class="grid-lines"></div>
     <div class="slide-inner split">
       <div class="left-col">
-        <div class="badge animate-1"><i class="fas fa-circle-dot"></i> SISTEMA INTERNO</div>
+        <div class="badge animate-1" data-i18n="badge.internal"><i class="fas fa-circle-dot"></i> SISTEMA INTERNO</div>
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">RESERVE</h3>
         </div>
-        <p class="subtitle animate-3" style="margin-bottom:20px;">Organize filas, horários e portarias sem confusão.</p>
+        <p class="subtitle animate-3" style="margin-bottom:20px;" data-i18n="s5.subtitle">Organize filas, horários e portarias sem confusão.</p>
         <div class="divider animate-3"></div>
         <ul class="bullets animate-4">
-          <li class="bullet-exp" onclick="openBulletModal('Agende cargas e descargas', 'O RESERVE permite que motoristas e transportadoras façam agendamentos com dia e hora específicos para cargas e descargas. Cada slot é controlado para evitar acúmulo de veículos na portaria, garantindo fluidez e previsibilidade em toda a operação.')">
+          <li class="bullet-exp" data-modal-key="r.b1" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Agende cargas e descargas</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Acompanhe motoristas e transportadoras', 'Assim que um motorista chega, sua presença é registrada no sistema e a portaria recebe a notificação automaticamente. Toda a movimentação de entrada e saída fica rastreada em tempo real, com histórico completo disponível para auditoria.')">
+          <li class="bullet-exp" data-modal-key="r.b2" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Acompanhe motoristas e transportadoras</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Acesse recibos e relatórios', 'Todos os comprovantes de agendamento e relatórios de movimentação de veículos ficam arquivados no RESERVE. É possível consultar histórico por período, gerar relatórios detalhados e auditar qualquer operação passada com poucos cliques.')">
+          <li class="bullet-exp" data-modal-key="r.b3" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Acesse recibos e relatórios</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Elimine filas e atrasos', 'Com o agendamento prévio e os slots controlados, a portaria deixa de ser um gargalo na operação. Motoristas chegam no horário certo, são atendidos com agilidade e toda a logística de entrada e saída flui sem congestionamentos ou esperas desnecessárias.')">
+          <li class="bullet-exp" data-modal-key="r.b4" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Elimine filas e atrasos</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
         </ul>
         <div class="btn-group animate-5">
-          <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
-          <button class="btn-secondary" onclick="goToSlide(2)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+          <button class="btn-dark" data-i18n="btn.view.sys"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
+          <button class="btn-secondary" onclick="goToSlide(2)" data-i18n="btn.back"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
       <div class="right-col animate-6">
@@ -1445,7 +1464,7 @@
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
 
-      <span>RESERVE — SISTEMA INTERNO</span>
+      <span data-i18n="s5.footer">RESERVE — SISTEMA INTERNO</span>
     </div>
   </div>
 
@@ -1459,33 +1478,33 @@
     <div class="grid-lines"></div>
     <div class="slide-inner split">
       <div class="left-col">
-        <div class="badge animate-1"><i class="fas fa-puzzle-piece"></i> MÓDULO NEXUS</div>
+        <div class="badge animate-1" data-i18n="badge.module"><i class="fas fa-puzzle-piece"></i> MÓDULO NEXUS</div>
         <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">FARM ROUTE</h3>
         </div>
-        <p class="subtitle animate-3" style="margin-bottom:20px;">Controle estruturado de rotas e endereços operacionais.</p>
+        <p class="subtitle animate-3" style="margin-bottom:20px;" data-i18n="s7.subtitle">Controle estruturado de rotas e endereços operacionais.</p>
         <div class="divider animate-3"></div>
         <ul class="bullets animate-4">
-          <li class="bullet-exp" onclick="openBulletModal('Controle estruturado de rotas', 'O FARM ROUTE organiza todas as rotas operacionais da empresa por filial, com dados detalhados de cada ponto de entrega e coleta. Isso garante que nenhuma rota fique sem registro e facilita o planejamento logístico das equipes regionais.')">
+          <li class="bullet-exp" data-modal-key="fr.b1" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Controle estruturado de rotas</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Dados completos por empresa', 'Para cada empresa cadastrada, o sistema armazena contatos, documentos, coordenadas geográficas e os responsáveis de cada ponto. Todas as informações necessárias para a operação ficam reunidas em um único cadastro, acessível a qualquer momento.')">
+          <li class="bullet-exp" data-modal-key="fr.b2" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Dados completos por empresa</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Organização por filial', 'As rotas são organizadas por filial e por localização geográfica, facilitando a distribuição de trabalho entre equipes regionais. Cada unidade acessa apenas as informações relevantes para sua área de atuação, sem poluição visual de dados de outras regiões.')">
+          <li class="bullet-exp" data-modal-key="fr.b3" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Organização por filial</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Integração com os demais sistemas', 'Os dados de endereço e rota cadastrados no FARM ROUTE são aproveitados pelos outros sistemas da Comando Log, evitando duplicidade de cadastros e garantindo que todas as plataformas trabalhem sempre com a mesma informação atualizada.')">
+          <li class="bullet-exp" data-modal-key="fr.b4" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Integração com os demais sistemas</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
         </ul>
         <div class="btn-group animate-5">
-          <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
-          <button class="btn-secondary" onclick="goToSlide(2)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+          <button class="btn-dark" data-i18n="btn.view.sys"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
+          <button class="btn-secondary" onclick="goToSlide(2)" data-i18n="btn.back"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
       <div class="right-col animate-6">
@@ -1497,7 +1516,7 @@
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
 
-      <span>FARM ROUTE — MÓDULO NEXUS</span>
+      <span data-i18n="s7.footer">FARM ROUTE — MÓDULO NEXUS</span>
     </div>
   </div>
 
@@ -1511,33 +1530,33 @@
     <div class="grid-lines"></div>
     <div class="slide-inner split">
       <div class="left-col">
-        <div class="badge animate-1"><i class="fas fa-puzzle-piece"></i> MÓDULO NEXUS</div>
+        <div class="badge animate-1" data-i18n="badge.module"><i class="fas fa-puzzle-piece"></i> MÓDULO NEXUS</div>
         <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">VIEW STOCK</h3>
         </div>
-        <p class="subtitle animate-3" style="margin-bottom:20px;">Visibilidade total do estoque em tempo real, por filial e produto.</p>
+        <p class="subtitle animate-3" style="margin-bottom:20px;" data-i18n="svs.subtitle">Visibilidade total do estoque em tempo real, por filial e produto.</p>
         <div class="divider animate-3"></div>
         <ul class="bullets animate-4">
-          <li class="bullet-exp" onclick="openBulletModal('Consulte estoques por filial', 'O VIEW STOCK exibe os níveis de estoque de cada produto por filial em tempo real, sem necessidade de consultas manuais ou planilhas paralelas. Qualquer membro autorizado da equipe acessa as informações atualizadas diretamente no painel, de qualquer lugar.')">
+          <li class="bullet-exp" data-modal-key="vs.b1" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Consulte estoques por filial</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Alertas de ruptura e excesso', 'O módulo monitora continuamente os níveis de estoque e dispara alertas automáticos quando um item está abaixo do mínimo ou acima do máximo configurado. Isso permite ação preventiva antes que uma ruptura afete a operação ou que o excesso gere custos desnecessários de armazenagem.')">
+          <li class="bullet-exp" data-modal-key="vs.b2" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Alertas de ruptura e excesso</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Histórico de movimentações', 'Todas as entradas e saídas de estoque ficam registradas com data, hora e responsável. O histórico completo permite identificar tendências de consumo, planejar reposições com antecedência e auditar qualquer divergência encontrada no inventário físico.')">
+          <li class="bullet-exp" data-modal-key="vs.b3" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Histórico de movimentações</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Integrado ao NEXUS', 'O VIEW STOCK opera como módulo nativo do NEXUS, aproveitando toda a infraestrutura de rastreamento e dados operacionais já existente. As informações de estoque se conectam diretamente ao fluxo de entregas e CT-es, proporcionando uma visão unificada da operação logística.')">
+          <li class="bullet-exp" data-modal-key="vs.b4" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Integrado ao NEXUS</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
         </ul>
         <div class="btn-group animate-5">
-          <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR MÓDULO</button>
-          <button class="btn-secondary" onclick="goToSlide(2)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+          <button class="btn-dark" data-i18n="btn.view.mod"><i class="fas fa-external-link-alt"></i> VISUALIZAR MÓDULO</button>
+          <button class="btn-secondary" onclick="goToSlide(2)" data-i18n="btn.back"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
       <div class="right-col animate-6">
@@ -1548,7 +1567,7 @@
     </div>
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
-      <span>VIEW STOCK — MÓDULO NEXUS</span>
+      <span data-i18n="svs.footer">VIEW STOCK — MÓDULO NEXUS</span>
     </div>
   </div>
 
@@ -1564,10 +1583,10 @@
 
       <!-- ── ESQUERDA: header + info ── -->
       <div style="display:flex; flex-direction:column; justify-content:center; gap:0;">
-        <div class="tag animate-1">EXTERNOS</div>
-        <h2 class="section-title animate-2"><span>Sistemas</span><br>Externos</h2>
+        <div class="tag animate-1" data-i18n="s8.tag">EXTERNOS</div>
+        <h2 class="section-title animate-2" data-i18n="s8.title"><span>Sistemas</span><br>Externos</h2>
         <div class="divider animate-3"></div>
-        <p class="subtitle animate-4" style="font-size:clamp(13px,1.3vw,15px); margin-bottom:22px;">
+        <p class="subtitle animate-4" style="font-size:clamp(13px,1.3vw,15px); margin-bottom:22px;" data-i18n="s8.subtitle">
           Plataformas parceiras integradas ao ecossistema Comando Log para gestão completa da operação.
         </p>
 
@@ -1575,22 +1594,22 @@
         <div class="animate-4" style="display:flex; flex-direction:column; gap:8px; margin-bottom:28px;">
           <div class="eco-highlight">
             <i class="fas fa-shield-alt"></i>
-            <span>Parceiro oficial TOTVS</span>
+            <span data-i18n="s8.hl1">Parceiro oficial TOTVS</span>
           </div>
           <div class="eco-highlight">
             <i class="fas fa-handshake"></i>
-            <span>VIA NEXXUS — fretes e transportadoras</span>
+            <span data-i18n="s8.hl2">VIA NEXXUS — fretes e transportadoras</span>
           </div>
           <div class="eco-highlight">
             <i class="fas fa-link"></i>
-            <span>Integração nativa com sistemas internos</span>
+            <span data-i18n="s8.hl3">Integração nativa com sistemas internos</span>
           </div>
         </div>
 
         <div class="btn-group animate-5" style="margin-top:0; width:100%;">
-          <button class="btn-secondary" onclick="goToSlide(1)"><i class="fas fa-arrow-left"></i> ANTERIOR</button>
-          <button class="btn-primary" onclick="goToSlide(2)"><i class="fas fa-laptop-code"></i> INTERNOS</button>
-          <button onclick="goToSlide(11)" style="
+          <button class="btn-secondary" onclick="goToSlide(1)" data-i18n="nav.prev"><i class="fas fa-arrow-left"></i> ANTERIOR</button>
+          <button class="btn-primary" onclick="goToSlide(2)" data-i18n="s8.int.btn"><i class="fas fa-laptop-code"></i> INTERNOS</button>
+          <button onclick="goToSlide(11)" data-i18n="s8.conclude.btn" style="
             margin-left:auto;
             padding:13px 22px;
             background: transparent;
@@ -1618,19 +1637,19 @@
           <div class="sys-card-header">
             <div class="sys-card-icon"><i class="fas fa-warehouse"></i></div>
             <div>
-              <div class="sys-card-tag">Armazém</div>
+              <div class="sys-card-tag" data-i18n="s8.wms.tag">Armazém</div>
               <div class="sys-card-name">TOTVS WMS</div>
             </div>
             <span class="sys-card-num">01</span>
           </div>
           <div class="sys-card-body">
-            <div class="sys-card-desc">Gestão completa do armazém, do recebimento à expedição com rastreabilidade total.</div>
+            <div class="sys-card-desc" data-i18n="s8.wms.desc">Gestão completa do armazém, do recebimento à expedição com rastreabilidade total.</div>
             <ul style="margin:8px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:5px;">
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Controle de endereçamento e inventário</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Rastreabilidade em tempo real</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Integração com expedição e recebimento</li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.wms.b1"> Controle de endereçamento e inventário</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.wms.b2"> Rastreabilidade em tempo real</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.wms.b3"> Integração com expedição e recebimento</span></li>
             </ul>
-            <div class="sys-card-cta">CONHECER <i class="fas fa-arrow-right"></i></div>
+            <div class="sys-card-cta" data-i18n="s3.cta">CONHECER <i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
@@ -1639,19 +1658,19 @@
           <div class="sys-card-header">
             <div class="sys-card-icon"><i class="fas fa-landmark"></i></div>
             <div>
-              <div class="sys-card-tag">ERP Financeiro</div>
+              <div class="sys-card-tag" data-i18n="s8.erp.tag">ERP Financeiro</div>
               <div class="sys-card-name">TOTVS PROTHEUS</div>
             </div>
             <span class="sys-card-num">02</span>
           </div>
           <div class="sys-card-body">
-            <div class="sys-card-desc">A espinha dorsal financeira, fiscal e contábil da operação integrada.</div>
+            <div class="sys-card-desc" data-i18n="s8.erp.desc">A espinha dorsal financeira, fiscal e contábil da operação integrada.</div>
             <ul style="margin:8px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:5px;">
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Gestão financeira e fiscal completa</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Módulos contábeis e de RH integrados</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Relatórios e dashboards gerenciais</li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.erp.b1"> Gestão financeira e fiscal completa</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.erp.b2"> Módulos contábeis e de RH integrados</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.erp.b3"> Relatórios e dashboards gerenciais</span></li>
             </ul>
-            <div class="sys-card-cta">CONHECER <i class="fas fa-arrow-right"></i></div>
+            <div class="sys-card-cta" data-i18n="s3.cta">CONHECER <i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
@@ -1660,19 +1679,19 @@
           <div class="sys-card-header">
             <div class="sys-card-icon"><i class="fas fa-handshake"></i></div>
             <div>
-              <div class="sys-card-tag">Fretes</div>
+              <div class="sys-card-tag" data-i18n="s8.vn.tag">Fretes</div>
               <div class="sys-card-name">VIA NEXXUS</div>
             </div>
             <span class="sys-card-num">03</span>
           </div>
           <div class="sys-card-body">
-            <div class="sys-card-desc">Plataforma de ofertas de carga para motoristas e transportadoras em tempo real.</div>
+            <div class="sys-card-desc" data-i18n="s8.vn.desc">Plataforma de ofertas de carga para motoristas e transportadoras em tempo real.</div>
             <ul style="margin:8px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:5px;">
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Cadastro e habilitação simples com documentos digitais</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Propostas de carga em tempo real</li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i> Integrado ao app NEXUS OFFER</li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.vn.b1"> Cadastro e habilitação simples com documentos digitais</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.vn.b2"> Propostas de carga em tempo real</span></li>
+              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.vn.b3"> Integrado ao app NEXUS OFFER</span></li>
             </ul>
-            <div class="sys-card-cta">CONHECER <i class="fas fa-arrow-right"></i></div>
+            <div class="sys-card-cta" data-i18n="s3.cta">CONHECER <i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
@@ -1681,7 +1700,7 @@
 
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
-      <span>3 SISTEMAS EXTERNOS</span>
+      <span data-i18n="s8.footer">3 SISTEMAS EXTERNOS</span>
     </div>
   </div>
 
@@ -1695,34 +1714,34 @@
     <div class="grid-lines"></div>
     <div class="slide-inner split">
       <div class="left-col" style="justify-content:center; align-self:center;">
-        <div class="badge animate-1"><i class="fas fa-circle-dot"></i> SISTEMA EXTERNO</div>
+        <div class="badge animate-1" data-i18n="badge.external"><i class="fas fa-circle-dot"></i> SISTEMA EXTERNO</div>
         <div style="display:flex; align-items:flex-end; gap:18px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">TOTVS WMS</h3>
           <img src="logos/LOGO_TOTVS.png" alt="TOTVS" class="animate-2" style="height:68px; width:auto; object-fit:contain; flex-shrink:0; filter:brightness(0); margin-bottom:4px;" />
         </div>
-        <p class="subtitle animate-3" style="margin-bottom:20px;">Gestão completa do armazém, do recebimento à expedição.</p>
+        <p class="subtitle animate-3" style="margin-bottom:20px;" data-i18n="s9.subtitle">Gestão completa do armazém, do recebimento à expedição.</p>
         <div class="divider animate-3"></div>
         <ul class="bullets animate-4">
-          <li class="bullet-exp" onclick="openBulletModal('Automatiza separação e expedição', 'O WMS gerencia de forma automatizada todo o processo de picking e expedição, indicando ao operador exatamente o que coletar e onde. Isso reduz drasticamente os erros humanos e acelera o tempo de preparação dos pedidos, aumentando a capacidade operacional do armazém.')">
+          <li class="bullet-exp" data-modal-key="wms.b1" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Automatiza separação e expedição</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Rastreabilidade total', 'Cada movimentação dentro do armazém — entrada, transferência interna, separação e saída — é registrada com data, hora e responsável. O histórico completo de qualquer item fica disponível para consulta a qualquer momento, facilitando auditorias e resolução de divergências.')">
+          <li class="bullet-exp" data-modal-key="wms.b2" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Rastreabilidade total</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Redução de erros operacionais', 'O sistema alerta em tempo real quando uma divergência é detectada — produto errado, quantidade incorreta ou endereço inválido. Isso evita que erros cheguem ao cliente e reduz significativamente o retrabalho das equipes, gerando economia e mais confiabilidade nas entregas.')">
+          <li class="bullet-exp" data-modal-key="wms.b3" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Redução de erros operacionais</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Integrado ao TOTVS Protheus', 'O WMS e o Protheus trabalham de forma sincronizada: enquanto o WMS controla a parte física do estoque no armazém, o Protheus registra os impactos financeiros e fiscais. Qualquer movimentação física gera automaticamente os lançamentos contábeis correspondentes, sem intervenção manual.')">
+          <li class="bullet-exp" data-modal-key="wms.b4" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Integrado ao TOTVS Protheus</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
         </ul>
         <div class="btn-group animate-5">
-          <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
-          <button class="btn-secondary" onclick="goToSlide(7)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+          <button class="btn-dark" data-i18n="btn.view.sys"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
+          <button class="btn-secondary" onclick="goToSlide(7)" data-i18n="btn.back"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
       <div class="right-col animate-6">
@@ -1734,7 +1753,7 @@
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
 
-      <span>TOTVS WMS — SISTEMA EXTERNO</span>
+      <span data-i18n="s9.footer">TOTVS WMS — SISTEMA EXTERNO</span>
     </div>
   </div>
 
@@ -1748,34 +1767,34 @@
     <div class="grid-lines"></div>
     <div class="slide-inner split">
       <div class="left-col">
-        <div class="badge animate-1"><i class="fas fa-circle-dot"></i> SISTEMA EXTERNO</div>
+        <div class="badge animate-1" data-i18n="badge.external"><i class="fas fa-circle-dot"></i> SISTEMA EXTERNO</div>
         <div style="display:flex; align-items:flex-end; gap:18px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">TOTVS PROTHEUS</h3>
           <img src="logos/LOGO_TOTVS.png" alt="TOTVS" class="animate-2" style="height:68px; width:auto; object-fit:contain; flex-shrink:0; filter:brightness(0); margin-bottom:4px;" />
         </div>
-        <p class="subtitle animate-3" style="margin-bottom:20px;">A espinha dorsal financeira e fiscal da sua operação.</p>
+        <p class="subtitle animate-3" style="margin-bottom:20px;" data-i18n="s10.subtitle">A espinha dorsal financeira e fiscal da sua operação.</p>
         <div class="divider animate-3"></div>
         <ul class="bullets animate-4">
-          <li class="bullet-exp" onclick="openBulletModal('Financeiro, fiscal e contábil', 'O Protheus centraliza todas as operações financeiras, fiscais e contábeis da empresa em um único ERP. Contas a pagar, contas a receber, emissão de notas fiscais e lançamentos contábeis são gerenciados de forma integrada e automatizada, eliminando planilhas paralelas e retrabalho.')">
+          <li class="bullet-exp" data-modal-key="erp.b1" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Financeiro, fiscal e contábil</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Controle de compras e vendas', 'Todo o ciclo de compras — da solicitação ao pagamento — e o ciclo de vendas são gerenciados pelo Protheus, com rastreabilidade completa de cada transação. A integração direta com o estoque garante que os dados financeiros reflitam sempre a realidade operacional.')">
+          <li class="bullet-exp" data-modal-key="erp.b2" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Controle de compras e vendas</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Conformidade garantida', 'O Protheus é continuamente atualizado para atender às obrigações fiscais e tributárias brasileiras — SPED, NFe, NFSe e demais obrigações acessórias. Isso garante que a empresa permaneça em conformidade com a legislação vigente sem esforço manual da equipe.')">
+          <li class="bullet-exp" data-modal-key="erp.b3" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Conformidade garantida</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Dados sincronizados com o WMS', 'As movimentações físicas registradas no WMS refletem automaticamente no Protheus, atualizando o estoque contábil, os custos e as notas fiscais em tempo real. Não há necessidade de lançamentos manuais entre os dois sistemas — a integração é totalmente automática.')">
+          <li class="bullet-exp" data-modal-key="erp.b4" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Dados sincronizados com o WMS</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
         </ul>
         <div class="btn-group animate-5">
-          <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
-          <button class="btn-secondary" onclick="goToSlide(7)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+          <button class="btn-dark" data-i18n="btn.view.sys"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
+          <button class="btn-secondary" onclick="goToSlide(7)" data-i18n="btn.back"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
       <div class="right-col animate-6">
@@ -1787,7 +1806,7 @@
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
 
-      <span>TOTVS PROTHEUS — SISTEMA EXTERNO</span>
+      <span data-i18n="s10.footer">TOTVS PROTHEUS — SISTEMA EXTERNO</span>
     </div>
   </div>
 
@@ -1801,31 +1820,31 @@
     <div class="grid-lines"></div>
     <div class="slide-inner split">
       <div class="left-col">
-        <div class="badge animate-1"><i class="fas fa-circle-dot"></i> SISTEMA EXTERNO</div>
+        <div class="badge animate-1" data-i18n="badge.external"><i class="fas fa-circle-dot"></i> SISTEMA EXTERNO</div>
         <h3 class="system-title animate-2">VIA NEXXUS</h3>
-        <p class="subtitle animate-3" style="margin-bottom:20px;">A plataforma de ofertas para motoristas e transportadoras.</p>
+        <p class="subtitle animate-3" style="margin-bottom:20px;" data-i18n="s6.subtitle">A plataforma de ofertas para motoristas e transportadoras.</p>
         <div class="divider animate-3"></div>
         <ul class="bullets animate-4">
-          <li class="bullet-exp" onclick="openBulletModal('Cadastro e habilitação simples', 'O cadastro no VIA NEXXUS é totalmente digital — o motorista ou transportadora envia os documentos necessários pela plataforma e recebe a habilitação rapidamente, sem precisar ir a nenhum escritório presencialmente. O processo é ágil, seguro e acessível de qualquer dispositivo.')">
+          <li class="bullet-exp" data-modal-key="vn.b1" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Cadastro e habilitação simples</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Receba e envie propostas de carga', 'A plataforma conecta quem tem carga disponível com motoristas e transportadoras habilitadas em tempo real. As propostas chegam diretamente na tela com todos os detalhes — origem, destino, valor e prazo — e o motorista pode aceitar ou negociar sem intermediários.')">
+          <li class="bullet-exp" data-modal-key="vn.b2" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Receba e envie propostas de carga</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Integrado ao app NEXUS OFFER', 'O VIA NEXXUS se conecta ao aplicativo NEXUS OFFER, disponível para celular, permitindo que motoristas recebam e respondam a propostas de qualquer lugar. A mobilidade é total — a operação não para por falta de comunicação, mesmo quando o motorista está na estrada.')">
+          <li class="bullet-exp" data-modal-key="vn.b3" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Integrado ao app NEXUS OFFER</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" onclick="openBulletModal('Mais autonomia para transportadoras', 'Transportadoras parceiras podem gerenciar suas próprias cargas, aceitar ou recusar fretes e acompanhar o histórico de operações diretamente pela plataforma. Menos dependência de intermediários significa mais agilidade nas negociações e mais controle sobre a própria agenda.')">
+          <li class="bullet-exp" data-modal-key="vn.b4" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Mais autonomia para transportadoras</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
         </ul>
         <div class="btn-group animate-5">
-          <button class="btn-dark"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
-          <button class="btn-secondary" onclick="goToSlide(7)"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+          <button class="btn-dark" data-i18n="btn.view.sys"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
+          <button class="btn-secondary" onclick="goToSlide(7)" data-i18n="btn.back"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
       <div class="right-col animate-6">
@@ -1836,7 +1855,7 @@
     </div>
     <div class="footer-strip">
       <span>COMANDO LOG © 2026</span>
-      <span>VIA NEXXUS — SISTEMA EXTERNO</span>
+      <span data-i18n="s6.footer">VIA NEXXUS — SISTEMA EXTERNO</span>
     </div>
   </div>
 
@@ -1849,17 +1868,17 @@
     <div class="bg-orb orb-3"></div>
     <div class="grid-lines"></div>
     <div class="slide-inner" style="flex-direction:column; justify-content:center;">
-      <div class="tag animate-1">FIM DO ONBOARDING</div>
-      <h2 class="section-title animate-2">Próximos <span>Passos</span></h2>
+      <div class="tag animate-1" data-i18n="s11.tag">FIM DO ONBOARDING</div>
+      <h2 class="section-title animate-2" data-i18n="s11.title">Próximos <span>Passos</span></h2>
       <div class="divider animate-3"></div>
-      <p class="subtitle animate-4" style="font-size:clamp(16px,1.8vw,22px); font-weight:600; color:var(--white); margin-bottom:6px;">Juntos potencializamos a logística integrada!</p>
-      <p class="closing-note animate-5">Estamos à disposição para esclarecer dúvidas, agendar treinamentos e oferecer suporte contínuo. Entre em contato conosco.</p>
+      <p class="subtitle animate-4" style="font-size:clamp(16px,1.8vw,22px); font-weight:600; color:var(--white); margin-bottom:6px;" data-i18n="s11.hero">Juntos potencializamos a logística integrada!</p>
+      <p class="closing-note animate-5" data-i18n="s11.sub">Estamos à disposição para esclarecer dúvidas, agendar treinamentos e oferecer suporte contínuo. Entre em contato conosco.</p>
       <div class="content-area animate-6">
         <div class="contact-grid">
           <div class="contact-card">
             <div class="contact-icon"><i class="fas fa-phone"></i></div>
             <div class="contact-info">
-              <label>Telefone</label>
+              <label data-i18n="s11.phone">Telefone</label>
               <!-- TODO: substituir pelo dado real -->
               <span>[TELEFONE_REAL]</span>
             </div>
@@ -1867,14 +1886,14 @@
           <div class="contact-card">
             <div class="contact-icon"><i class="fas fa-globe"></i></div>
             <div class="contact-info">
-              <label>Site</label>
+              <label data-i18n="s11.site">Site</label>
               <span>www.comandolog.com.br</span>
             </div>
           </div>
           <div class="contact-card">
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div class="contact-info">
-              <label>Suporte</label>
+              <label data-i18n="s11.support">Suporte</label>
               <!-- TODO: substituir pelo dado real -->
               <span>[EMAIL_REAL]</span>
             </div>
@@ -1882,30 +1901,30 @@
         </div>
         <div style="display:flex; flex-direction:column; justify-content:center; gap:20px;">
           <div style="background:var(--card-bg); border:1px solid var(--border-2); border-radius:var(--radius); padding:28px;">
-            <div style="font-size:13px; font-weight:700; letter-spacing:2px; color:var(--accent-3); text-transform:uppercase; margin-bottom:12px;">SISTEMAS APRESENTADOS</div>
+            <div style="font-size:13px; font-weight:700; letter-spacing:2px; color:var(--accent-3); text-transform:uppercase; margin-bottom:12px;" data-i18n="s11.presented">SISTEMAS APRESENTADOS</div>
             <div style="display:flex; flex-direction:column; gap:8px;">
               <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--white-70);">
-                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i> NEXUS — Rastreamento e CT-es
+                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i><span data-i18n="s11.sys1"> NEXUS — Rastreamento e CT-es</span>
               </div>
               <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--white-70);">
-                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i> RESERVE — Portaria e Agendamento
+                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i><span data-i18n="s11.sys2"> RESERVE — Portaria e Agendamento</span>
               </div>
               <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--white-70);">
-                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i> VIA NEXXUS — Ofertas de Carga
+                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i><span data-i18n="s11.sys3"> VIA NEXXUS — Ofertas de Carga</span>
               </div>
               <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--white-70);">
-                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i> FARM ROUTE — Rotas e Endereços
+                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i><span data-i18n="s11.sys4"> FARM ROUTE — Rotas e Endereços</span>
               </div>
               <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--white-70);">
-                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i> TOTVS WMS — Gestão de Armazém
+                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i><span data-i18n="s11.sys5"> TOTVS WMS — Gestão de Armazém</span>
               </div>
               <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--white-70);">
-                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i> TOTVS PROTHEUS — ERP Financeiro
+                <i class="fas fa-check-circle" style="color:var(--accent-2);"></i><span data-i18n="s11.sys6"> TOTVS PROTHEUS — ERP Financeiro</span>
               </div>
             </div>
           </div>
           <div style="display:flex; gap:12px; margin-top:8px; flex-wrap:wrap;">
-            <button class="btn-primary" onclick="goToSlide(0)"><i class="fas fa-redo"></i> REINICIAR</button>
+            <button class="btn-primary" onclick="goToSlide(0)" data-i18n="s11.restart"><i class="fas fa-redo"></i> REINICIAR</button>
           </div>
         </div>
       </div>
@@ -1990,6 +2009,248 @@
     const total = document.querySelectorAll('.slide').length;
     const pct = total > 1 ? (current / (total - 1)) * 100 : 0;
     document.getElementById('progress-bar').style.width = pct + '%';
+  }
+
+  /* ── I18N ── */
+  let currentLang = localStorage.getItem('onboarding-lang') || 'pt';
+
+  const translations = {
+    pt: {
+      'fs.title': 'Ativar Tela Cheia',
+      'fs.sub': 'Para a melhor experiência durante o onboarding, recomendamos visualizar em <strong>tela cheia</strong>.<br>Isso evita quebras de layout e garante que tudo seja exibido corretamente.',
+      'fs.enter': '<i class="fas fa-expand"></i> Entrar em Tela Cheia',
+      'fs.skip': 'Continuar sem tela cheia',
+      'splash.welcome': 'Seja bem-vindo ao<br>Onboarding Interativo',
+      'splash.label': 'Sistemas Comando Log',
+      's1.eyebrow': 'ONBOARDING INTERATIVO',
+      's1.kicker': 'Conheça cada sistema e sua função principal dentro do ecossistema logístico.',
+      's1.cta': '<i class="fas fa-arrow-right"></i> COMEÇAR',
+      's1.footer': 'SISTEMAS LOGÍSTICOS INTEGRADOS',
+      's2.tag': 'PLATAFORMA',
+      's2.title': 'Nosso <span>Ecossistema</span><br>de Sistemas',
+      's2.subtitle': 'A Comando Log opera com <strong>Sistemas Internos</strong> próprios — incluindo módulos especializados do NEXUS — e <strong>Sistemas Externos</strong> integrados para gestão financeira e de armazém.',
+      's2.stat1': 'Internos', 's2.stat2': 'Módulos', 's2.stat3': 'Externos',
+      's2.hl1': 'Acesso via browser e mobile', 's2.hl2': 'Dados em tempo real', 's2.hl3': 'Suporte técnico incluído',
+      's2.label.int': 'INTERNOS', 's2.label.ext': 'EXTERNOS',
+      'nav.prev': '<i class="fas fa-arrow-left"></i> ANTERIOR',
+      'nav.next': 'PRÓXIMO <i class="fas fa-arrow-right"></i>',
+      's3.tag': 'INTERNOS',
+      's3.title': '<span>Sistemas</span><br>Internos',
+      's3.subtitle': 'Ferramentas próprias da Comando Log para dominar cada etapa da operação logística.',
+      's3.hl1': '2 sistemas + 2 módulos NEXUS', 's3.hl2': '100% integrados entre si em tempo real', 's3.hl3': 'Acesso exclusivo para equipe Comando Log',
+      's3.ext.btn': '<i class="fas fa-plug"></i> EXTERNOS',
+      's3.nexus.tag': 'Dashboard', 's3.nexus.desc': 'Central de operações — CT-es, entregas e indicadores em tempo real.',
+      's3.nexus.b1': ' Consulta de CT-es e entregas em tempo real', 's3.nexus.b2': ' Indicadores operacionais e relatórios', 's3.nexus.b3': ' Integração financeira e operacional completa',
+      's3.reserve.tag': 'Agendamento', 's3.reserve.desc': 'Gestão inteligente de portaria — slots de carga e descarga sem filas.',
+      's3.reserve.b1': ' Agendamento de horários com slots controlados', 's3.reserve.b2': ' Acompanhamento de motoristas e transportadoras', 's3.reserve.b3': ' Elimina filas e atrasos na portaria',
+      's3.cta': 'CONHECER <i class="fas fa-arrow-right"></i>',
+      's3.modules.label': '<i class="fas fa-puzzle-piece"></i> Módulos NEXUS',
+      's3.mod.tag': 'Módulo', 's3.fr.desc': 'Rotas e endereços operacionais por filial', 's3.vs.desc': 'Visibilidade total do estoque em tempo real',
+      's3.footer': '2 SISTEMAS INTERNOS · 2 MÓDULOS NEXUS',
+      'badge.internal': '<i class="fas fa-circle-dot"></i> SISTEMA INTERNO',
+      'badge.external': '<i class="fas fa-circle-dot"></i> SISTEMA EXTERNO',
+      'badge.module': '<i class="fas fa-puzzle-piece"></i> MÓDULO NEXUS',
+      'btn.view.sys': '<i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA',
+      'btn.view.mod': '<i class="fas fa-external-link-alt"></i> VISUALIZAR MÓDULO',
+      'btn.back': '<i class="fas fa-arrow-left"></i> VOLTAR',
+      's4.subtitle': 'Rastreamento e visibilidade total da operação logística.',
+      's4.footer': 'NEXUS — SISTEMA INTERNO',
+      's5.subtitle': 'Organize filas, horários e portarias sem confusão.',
+      's5.footer': 'RESERVE — SISTEMA INTERNO',
+      's7.subtitle': 'Controle estruturado de rotas e endereços operacionais.',
+      's7.footer': 'FARM ROUTE — MÓDULO NEXUS',
+      'svs.subtitle': 'Visibilidade total do estoque em tempo real, por filial e produto.',
+      'svs.footer': 'VIEW STOCK — MÓDULO NEXUS',
+      's8.tag': 'EXTERNOS', 's8.title': '<span>Sistemas</span><br>Externos',
+      's8.subtitle': 'Plataformas parceiras integradas ao ecossistema Comando Log para gestão completa da operação.',
+      's8.hl1': 'Parceiro oficial TOTVS', 's8.hl2': 'VIA NEXXUS — fretes e transportadoras', 's8.hl3': 'Integração nativa com sistemas internos',
+      's8.int.btn': '<i class="fas fa-laptop-code"></i> INTERNOS',
+      's8.conclude.btn': '<i class="fas fa-flag-checkered"></i> CONCLUIR',
+      's8.wms.tag': 'Armazém', 's8.wms.desc': 'Gestão completa do armazém, do recebimento à expedição com rastreabilidade total.',
+      's8.wms.b1': ' Controle de endereçamento e inventário', 's8.wms.b2': ' Rastreabilidade em tempo real', 's8.wms.b3': ' Integração com expedição e recebimento',
+      's8.erp.tag': 'ERP Financeiro', 's8.erp.desc': 'A espinha dorsal financeira, fiscal e contábil da operação integrada.',
+      's8.erp.b1': ' Gestão financeira e fiscal completa', 's8.erp.b2': ' Módulos contábeis e de RH integrados', 's8.erp.b3': ' Relatórios e dashboards gerenciais',
+      's8.vn.tag': 'Fretes', 's8.vn.desc': 'Plataforma de ofertas de carga para motoristas e transportadoras em tempo real.',
+      's8.vn.b1': ' Cadastro e habilitação simples com documentos digitais', 's8.vn.b2': ' Propostas de carga em tempo real', 's8.vn.b3': ' Integrado ao app NEXUS OFFER',
+      's8.footer': '3 SISTEMAS EXTERNOS',
+      's9.subtitle': 'Gestão completa do armazém, do recebimento à expedição.',
+      's9.footer': 'TOTVS WMS — SISTEMA EXTERNO',
+      's10.subtitle': 'A espinha dorsal financeira e fiscal da sua operação.',
+      's10.footer': 'TOTVS PROTHEUS — SISTEMA EXTERNO',
+      's6.subtitle': 'A plataforma de ofertas para motoristas e transportadoras.',
+      's6.footer': 'VIA NEXXUS — SISTEMA EXTERNO',
+      's11.tag': 'FIM DO ONBOARDING', 's11.title': 'Próximos <span>Passos</span>',
+      's11.hero': 'Juntos potencializamos a logística integrada!',
+      's11.sub': 'Estamos à disposição para esclarecer dúvidas, agendar treinamentos e oferecer suporte contínuo. Entre em contato conosco.',
+      's11.phone': 'Telefone', 's11.site': 'Site', 's11.support': 'Suporte',
+      's11.presented': 'SISTEMAS APRESENTADOS',
+      's11.sys1': ' NEXUS — Rastreamento e CT-es', 's11.sys2': ' RESERVE — Portaria e Agendamento',
+      's11.sys3': ' VIA NEXXUS — Ofertas de Carga', 's11.sys4': ' FARM ROUTE — Rotas e Endereços',
+      's11.sys5': ' TOTVS WMS — Gestão de Armazém', 's11.sys6': ' TOTVS PROTHEUS — ERP Financeiro',
+      's11.restart': '<i class="fas fa-redo"></i> REINICIAR',
+      modals: {
+        'n.b1':   { title: 'Acompanhe CT-es e entregas', detail: 'Todas as Cartas de Transporte Eletrônicas e seus status ficam visíveis em tempo real no painel do NEXUS. Você acompanha cada entrega sem precisar consultar sistemas separados — tudo centralizado e atualizado automaticamente, do despacho até a confirmação.' },
+        'n.b2':   { title: 'Acesse comprovantes e documentos', detail: 'Comprovantes de entrega, notas fiscais e documentos operacionais ficam disponíveis em um único lugar no NEXUS. Chega de procurar em e-mails ou pastas físicas — qualquer documento pode ser localizado e baixado em segundos, por qualquer membro autorizado da equipe.' },
+        'n.b3':   { title: 'Visualize indicadores e relatórios', detail: 'O NEXUS oferece dashboards com os principais indicadores da operação: volume entregue, taxa de ocorrências, desempenho por região e muito mais. Esses dados são apresentados de forma visual e acessível, apoiando decisões rápidas e estratégicas no dia a dia.' },
+        'n.b4':   { title: 'Integração completa', detail: 'O NEXUS conecta os dados operacionais diretamente com o módulo financeiro, eliminando retrabalho e garantindo consistência das informações em toda a empresa. Uma ação no operacional reflete automaticamente no financeiro — sem lançamentos manuais.' },
+        'r.b1':   { title: 'Agende cargas e descargas', detail: 'O RESERVE permite que motoristas e transportadoras façam agendamentos com dia e hora específicos para cargas e descargas. Cada slot é controlado para evitar acúmulo de veículos na portaria, garantindo fluidez e previsibilidade em toda a operação.' },
+        'r.b2':   { title: 'Acompanhe motoristas e transportadoras', detail: 'Assim que um motorista chega, sua presença é registrada no sistema e a portaria recebe a notificação automaticamente. Toda a movimentação de entrada e saída fica rastreada em tempo real, com histórico completo disponível para auditoria.' },
+        'r.b3':   { title: 'Acesse recibos e relatórios', detail: 'Todos os comprovantes de agendamento e relatórios de movimentação de veículos ficam arquivados no RESERVE. É possível consultar histórico por período, gerar relatórios detalhados e auditar qualquer operação passada com poucos cliques.' },
+        'r.b4':   { title: 'Elimine filas e atrasos', detail: 'Com o agendamento prévio e os slots controlados, a portaria deixa de ser um gargalo na operação. Motoristas chegam no horário certo, são atendidos com agilidade e toda a logística de entrada e saída flui sem congestionamentos ou esperas desnecessárias.' },
+        'fr.b1':  { title: 'Controle estruturado de rotas', detail: 'O FARM ROUTE organiza todas as rotas operacionais da empresa por filial, com dados detalhados de cada ponto de entrega e coleta. Isso garante que nenhuma rota fique sem registro e facilita o planejamento logístico das equipes regionais.' },
+        'fr.b2':  { title: 'Dados completos por empresa', detail: 'Para cada empresa cadastrada, o sistema armazena contatos, documentos, coordenadas geográficas e os responsáveis de cada ponto. Todas as informações necessárias para a operação ficam reunidas em um único cadastro, acessível a qualquer momento.' },
+        'fr.b3':  { title: 'Organização por filial', detail: 'As rotas são organizadas por filial e por localização geográfica, facilitando a distribuição de trabalho entre equipes regionais. Cada unidade acessa apenas as informações relevantes para sua área de atuação, sem poluição visual de dados de outras regiões.' },
+        'fr.b4':  { title: 'Integração com os demais sistemas', detail: 'Os dados de endereço e rota cadastrados no FARM ROUTE são aproveitados pelos outros sistemas da Comando Log, evitando duplicidade de cadastros e garantindo que todas as plataformas trabalhem sempre com a mesma informação atualizada.' },
+        'vs.b1':  { title: 'Consulte estoques por filial', detail: 'O VIEW STOCK exibe os níveis de estoque de cada produto por filial em tempo real, sem necessidade de consultas manuais ou planilhas paralelas. Qualquer membro autorizado da equipe acessa as informações atualizadas diretamente no painel, de qualquer lugar.' },
+        'vs.b2':  { title: 'Alertas de ruptura e excesso', detail: 'O módulo monitora continuamente os níveis de estoque e dispara alertas automáticos quando um item está abaixo do mínimo ou acima do máximo configurado. Isso permite ação preventiva antes que uma ruptura afete a operação ou que o excesso gere custos desnecessários de armazenagem.' },
+        'vs.b3':  { title: 'Histórico de movimentações', detail: 'Todas as entradas e saídas de estoque ficam registradas com data, hora e responsável. O histórico completo permite identificar tendências de consumo, planejar reposições com antecedência e auditar qualquer divergência encontrada no inventário físico.' },
+        'vs.b4':  { title: 'Integrado ao NEXUS', detail: 'O VIEW STOCK opera como módulo nativo do NEXUS, aproveitando toda a infraestrutura de rastreamento e dados operacionais já existente. As informações de estoque se conectam diretamente ao fluxo de entregas e CT-es, proporcionando uma visão unificada da operação logística.' },
+        'wms.b1': { title: 'Automatiza separação e expedição', detail: 'O WMS gerencia de forma automatizada todo o processo de picking e expedição, indicando ao operador exatamente o que coletar e onde. Isso reduz drasticamente os erros humanos e acelera o tempo de preparação dos pedidos, aumentando a capacidade operacional do armazém.' },
+        'wms.b2': { title: 'Rastreabilidade total', detail: 'Cada movimentação dentro do armazém — entrada, transferência interna, separação e saída — é registrada com data, hora e responsável. O histórico completo de qualquer item fica disponível para consulta a qualquer momento, facilitando auditorias e resolução de divergências.' },
+        'wms.b3': { title: 'Redução de erros operacionais', detail: 'O sistema alerta em tempo real quando uma divergência é detectada — produto errado, quantidade incorreta ou endereço inválido. Isso evita que erros cheguem ao cliente e reduz significativamente o retrabalho das equipes, gerando economia e mais confiabilidade nas entregas.' },
+        'wms.b4': { title: 'Integrado ao TOTVS Protheus', detail: 'O WMS e o Protheus trabalham de forma sincronizada: enquanto o WMS controla a parte física do estoque no armazém, o Protheus registra os impactos financeiros e fiscais. Qualquer movimentação física gera automaticamente os lançamentos contábeis correspondentes, sem intervenção manual.' },
+        'erp.b1': { title: 'Financeiro, fiscal e contábil', detail: 'O Protheus centraliza todas as operações financeiras, fiscais e contábeis da empresa em um único ERP. Contas a pagar, contas a receber, emissão de notas fiscais e lançamentos contábeis são gerenciados de forma integrada e automatizada, eliminando planilhas paralelas e retrabalho.' },
+        'erp.b2': { title: 'Controle de compras e vendas', detail: 'Todo o ciclo de compras — da solicitação ao pagamento — e o ciclo de vendas são gerenciados pelo Protheus, com rastreabilidade completa de cada transação. A integração direta com o estoque garante que os dados financeiros reflitam sempre a realidade operacional.' },
+        'erp.b3': { title: 'Conformidade garantida', detail: 'O Protheus é continuamente atualizado para atender às obrigações fiscais e tributárias brasileiras — SPED, NFe, NFSe e demais obrigações acessórias. Isso garante que a empresa permaneça em conformidade com a legislação vigente sem esforço manual da equipe.' },
+        'erp.b4': { title: 'Dados sincronizados com o WMS', detail: 'As movimentações físicas registradas no WMS refletem automaticamente no Protheus, atualizando o estoque contábil, os custos e as notas fiscais em tempo real. Não há necessidade de lançamentos manuais entre os dois sistemas — a integração é totalmente automática.' },
+        'vn.b1':  { title: 'Cadastro e habilitação simples', detail: 'O cadastro no VIA NEXXUS é totalmente digital — o motorista ou transportadora envia os documentos necessários pela plataforma e recebe a habilitação rapidamente, sem precisar ir a nenhum escritório presencialmente. O processo é ágil, seguro e acessível de qualquer dispositivo.' },
+        'vn.b2':  { title: 'Receba e envie propostas de carga', detail: 'A plataforma conecta quem tem carga disponível com motoristas e transportadoras habilitadas em tempo real. As propostas chegam diretamente na tela com todos os detalhes — origem, destino, valor e prazo — e o motorista pode aceitar ou negociar sem intermediários.' },
+        'vn.b3':  { title: 'Integrado ao app NEXUS OFFER', detail: 'O VIA NEXXUS se conecta ao aplicativo NEXUS OFFER, disponível para celular, permitindo que motoristas recebam e respondam a propostas de qualquer lugar. A mobilidade é total — a operação não para por falta de comunicação, mesmo quando o motorista está na estrada.' },
+        'vn.b4':  { title: 'Mais autonomia para transportadoras', detail: 'Transportadoras parceiras podem gerenciar suas próprias cargas, aceitar ou recusar fretes e acompanhar o histórico de operações diretamente pela plataforma. Menos dependência de intermediários significa mais agilidade nas negociações e mais controle sobre a própria agenda.' },
+      }
+    },
+    en: {
+      'fs.title': 'Enable Full Screen',
+      'fs.sub': 'For the best onboarding experience, we recommend viewing in <strong>full screen</strong>.<br>This prevents layout breaks and ensures everything is displayed correctly.',
+      'fs.enter': '<i class="fas fa-expand"></i> Enter Full Screen',
+      'fs.skip': 'Continue without full screen',
+      'splash.welcome': 'Welcome to the<br>Interactive Onboarding',
+      'splash.label': 'Comando Log Systems',
+      's1.eyebrow': 'INTERACTIVE ONBOARDING',
+      's1.kicker': 'Discover each system and its key role within the logistics ecosystem.',
+      's1.cta': '<i class="fas fa-arrow-right"></i> GET STARTED',
+      's1.footer': 'INTEGRATED LOGISTICS SYSTEMS',
+      's2.tag': 'PLATFORM',
+      's2.title': 'Our <span>Ecosystem</span><br>of Systems',
+      's2.subtitle': 'Comando Log operates with proprietary <strong>Internal Systems</strong> — including specialized NEXUS modules — and integrated <strong>External Systems</strong> for financial and warehouse management.',
+      's2.stat1': 'Internal', 's2.stat2': 'Modules', 's2.stat3': 'External',
+      's2.hl1': 'Browser and mobile access', 's2.hl2': 'Real-time data', 's2.hl3': 'Technical support included',
+      's2.label.int': 'INTERNAL', 's2.label.ext': 'EXTERNAL',
+      'nav.prev': '<i class="fas fa-arrow-left"></i> PREVIOUS',
+      'nav.next': 'NEXT <i class="fas fa-arrow-right"></i>',
+      's3.tag': 'INTERNAL',
+      's3.title': '<span>Internal</span><br>Systems',
+      's3.subtitle': 'Proprietary Comando Log tools to master every step of the logistics operation.',
+      's3.hl1': '2 systems + 2 NEXUS modules', 's3.hl2': '100% integrated in real time', 's3.hl3': 'Exclusive access for the Comando Log team',
+      's3.ext.btn': '<i class="fas fa-plug"></i> EXTERNAL',
+      's3.nexus.tag': 'Dashboard', 's3.nexus.desc': 'Operations center — CT-es, deliveries, and real-time indicators.',
+      's3.nexus.b1': ' CT-e and delivery real-time tracking', 's3.nexus.b2': ' Operational indicators and reports', 's3.nexus.b3': ' Full financial and operational integration',
+      's3.reserve.tag': 'Scheduling', 's3.reserve.desc': 'Smart gatehouse management — loading and unloading slots without queues.',
+      's3.reserve.b1': ' Time scheduling with controlled slots', 's3.reserve.b2': ' Driver and carrier tracking', 's3.reserve.b3': ' Eliminates queues and gatehouse delays',
+      's3.cta': 'LEARN MORE <i class="fas fa-arrow-right"></i>',
+      's3.modules.label': '<i class="fas fa-puzzle-piece"></i> NEXUS Modules',
+      's3.mod.tag': 'Module', 's3.fr.desc': 'Operational routes and addresses by branch', 's3.vs.desc': 'Full real-time inventory visibility',
+      's3.footer': '2 INTERNAL SYSTEMS · 2 NEXUS MODULES',
+      'badge.internal': '<i class="fas fa-circle-dot"></i> INTERNAL SYSTEM',
+      'badge.external': '<i class="fas fa-circle-dot"></i> EXTERNAL SYSTEM',
+      'badge.module': '<i class="fas fa-puzzle-piece"></i> NEXUS MODULE',
+      'btn.view.sys': '<i class="fas fa-external-link-alt"></i> VIEW SYSTEM',
+      'btn.view.mod': '<i class="fas fa-external-link-alt"></i> VIEW MODULE',
+      'btn.back': '<i class="fas fa-arrow-left"></i> BACK',
+      's4.subtitle': 'Full tracking and visibility of the logistics operation.',
+      's4.footer': 'NEXUS — INTERNAL SYSTEM',
+      's5.subtitle': 'Organize queues, schedules, and gatehouses without confusion.',
+      's5.footer': 'RESERVE — INTERNAL SYSTEM',
+      's7.subtitle': 'Structured control of operational routes and addresses.',
+      's7.footer': 'FARM ROUTE — NEXUS MODULE',
+      'svs.subtitle': 'Full real-time inventory visibility, by branch and product.',
+      'svs.footer': 'VIEW STOCK — NEXUS MODULE',
+      's8.tag': 'EXTERNAL', 's8.title': '<span>External</span><br>Systems',
+      's8.subtitle': 'Partner platforms integrated into the Comando Log ecosystem for complete operations management.',
+      's8.hl1': 'Official TOTVS partner', 's8.hl2': 'VIA NEXXUS — freight and carriers', 's8.hl3': 'Native integration with internal systems',
+      's8.int.btn': '<i class="fas fa-laptop-code"></i> INTERNAL',
+      's8.conclude.btn': '<i class="fas fa-flag-checkered"></i> FINISH',
+      's8.wms.tag': 'Warehouse', 's8.wms.desc': 'Complete warehouse management, from receiving to shipping with full traceability.',
+      's8.wms.b1': ' Address control and inventory management', 's8.wms.b2': ' Real-time traceability', 's8.wms.b3': ' Integration with shipping and receiving',
+      's8.erp.tag': 'Financial ERP', 's8.erp.desc': 'The financial, fiscal, and accounting backbone of the integrated operation.',
+      's8.erp.b1': ' Complete financial and fiscal management', 's8.erp.b2': ' Integrated accounting and HR modules', 's8.erp.b3': ' Reports and management dashboards',
+      's8.vn.tag': 'Freight', 's8.vn.desc': 'Real-time freight proposal platform for drivers and carriers.',
+      's8.vn.b1': ' Simple registration and onboarding with digital documents', 's8.vn.b2': ' Real-time freight proposals', 's8.vn.b3': ' Integrated with NEXUS OFFER app',
+      's8.footer': '3 EXTERNAL SYSTEMS',
+      's9.subtitle': 'Complete warehouse management, from receiving to shipping.',
+      's9.footer': 'TOTVS WMS — EXTERNAL SYSTEM',
+      's10.subtitle': 'The financial and fiscal backbone of your operation.',
+      's10.footer': 'TOTVS PROTHEUS — EXTERNAL SYSTEM',
+      's6.subtitle': 'The freight proposal platform for drivers and carriers.',
+      's6.footer': 'VIA NEXXUS — EXTERNAL SYSTEM',
+      's11.tag': 'END OF ONBOARDING', 's11.title': 'Next <span>Steps</span>',
+      's11.hero': 'Together we power integrated logistics!',
+      's11.sub': 'We are available to answer questions, schedule training sessions, and provide ongoing support. Get in touch with us.',
+      's11.phone': 'Phone', 's11.site': 'Website', 's11.support': 'Support',
+      's11.presented': 'SYSTEMS PRESENTED',
+      's11.sys1': ' NEXUS — Tracking and CT-es', 's11.sys2': ' RESERVE — Gatehouse and Scheduling',
+      's11.sys3': ' VIA NEXXUS — Freight Offers', 's11.sys4': ' FARM ROUTE — Routes and Addresses',
+      's11.sys5': ' TOTVS WMS — Warehouse Management', 's11.sys6': ' TOTVS PROTHEUS — Financial ERP',
+      's11.restart': '<i class="fas fa-redo"></i> RESTART',
+      modals: {
+        'n.b1':   { title: 'Track CT-es and deliveries', detail: 'All Electronic Transport Documents and their statuses are visible in real time on the NEXUS dashboard. You can track every delivery without consulting separate systems — everything centralized and automatically updated, from dispatch to delivery confirmation.' },
+        'n.b2':   { title: 'Access receipts and documents', detail: 'Delivery receipts, invoices, and operational documents are available in one place on NEXUS. No more searching through emails or physical folders — any document can be found and downloaded in seconds by any authorized team member.' },
+        'n.b3':   { title: 'View indicators and reports', detail: 'NEXUS provides dashboards with key operational indicators: delivery volume, incident rate, regional performance, and more. This data is presented visually and accessibly, supporting quick, strategic decisions in day-to-day operations.' },
+        'n.b4':   { title: 'Full integration', detail: 'NEXUS connects operational data directly with the financial module, eliminating rework and ensuring information consistency throughout the company. An action on the operational side automatically reflects in finance — no manual entries required.' },
+        'r.b1':   { title: 'Schedule loads and unloads', detail: 'RESERVE allows drivers and carriers to schedule specific dates and times for loading and unloading. Each slot is controlled to prevent vehicle buildup at the gatehouse, ensuring smooth flow and predictability throughout the operation.' },
+        'r.b2':   { title: 'Track drivers and carriers', detail: 'As soon as a driver arrives, their presence is recorded in the system and the gatehouse receives automatic notification. All entry and exit movements are tracked in real time, with a complete history available for auditing.' },
+        'r.b3':   { title: 'Access receipts and reports', detail: 'All scheduling receipts and vehicle movement reports are archived in RESERVE. You can search history by date range, generate detailed reports, and audit any past operation with just a few clicks.' },
+        'r.b4':   { title: 'Eliminate queues and delays', detail: 'With pre-scheduling and controlled slots, the gatehouse stops being a bottleneck. Drivers arrive at the right time, are served quickly, and the entire entry/exit logistics flows without congestion or unnecessary waiting.' },
+        'fr.b1':  { title: 'Structured route management', detail: 'FARM ROUTE organizes all company operational routes by branch, with detailed data for each delivery and pickup point. This ensures no route goes unregistered and simplifies logistics planning for regional teams.' },
+        'fr.b2':  { title: 'Complete data per company', detail: 'For each registered company, the system stores contacts, documents, geographic coordinates, and responsible parties for each point. All information needed for operations is gathered in a single record, accessible at any time.' },
+        'fr.b3':  { title: 'Organization by branch', detail: 'Routes are organized by branch and geographic location, facilitating work distribution among regional teams. Each unit accesses only the information relevant to its area, without visual clutter from other regions\' data.' },
+        'fr.b4':  { title: 'Integration with other systems', detail: 'Address and route data registered in FARM ROUTE is reused by other Comando Log systems, avoiding duplicate entries and ensuring all platforms always work with the same updated information.' },
+        'vs.b1':  { title: 'Check inventory by branch', detail: 'VIEW STOCK displays stock levels for each product by branch in real time, without the need for manual queries or parallel spreadsheets. Any authorized team member can access updated information directly on the dashboard, from anywhere.' },
+        'vs.b2':  { title: 'Stockout and excess alerts', detail: 'The module continuously monitors inventory levels and triggers automatic alerts when an item falls below the minimum or exceeds the configured maximum. This enables preventive action before a stockout disrupts operations or excess stock generates unnecessary storage costs.' },
+        'vs.b3':  { title: 'Movement history', detail: 'All stock entries and exits are recorded with date, time, and responsible person. The complete history allows identifying consumption trends, planning replenishments in advance, and auditing any discrepancy found in the physical inventory.' },
+        'vs.b4':  { title: 'Integrated with NEXUS', detail: 'VIEW STOCK operates as a native NEXUS module, leveraging all the existing tracking and operational data infrastructure. Inventory information connects directly to the delivery and CT-e flow, providing a unified view of the logistics operation.' },
+        'wms.b1': { title: 'Automates picking and shipping', detail: 'The WMS automatically manages the entire picking and shipping process, directing operators exactly what to collect and where. This drastically reduces human errors and speeds up order preparation time, increasing the warehouse\'s operational capacity.' },
+        'wms.b2': { title: 'Full traceability', detail: 'Every movement within the warehouse — receipt, internal transfer, picking, and shipping — is recorded with date, time, and responsible person. The complete history of any item is available for consultation at any time, facilitating audits and resolving discrepancies.' },
+        'wms.b3': { title: 'Reduction of operational errors', detail: 'The system alerts in real time when a discrepancy is detected — wrong product, incorrect quantity, or invalid address. This prevents errors from reaching the customer and significantly reduces rework, generating savings and greater reliability in deliveries.' },
+        'wms.b4': { title: 'Integrated with TOTVS Protheus', detail: 'WMS and Protheus work in sync: while WMS controls the physical stock in the warehouse, Protheus records the financial and fiscal impacts. Any physical movement automatically generates the corresponding accounting entries, without manual intervention.' },
+        'erp.b1': { title: 'Financial, fiscal, and accounting', detail: 'Protheus centralizes all financial, fiscal, and accounting operations in a single ERP. Accounts payable, receivable, invoice issuance, and accounting entries are managed in an integrated and automated way, eliminating parallel spreadsheets and rework.' },
+        'erp.b2': { title: 'Purchase and sales control', detail: 'The entire purchasing cycle — from request to payment — and the sales cycle are managed by Protheus, with full traceability of each transaction. Direct integration with inventory ensures financial data always reflects operational reality.' },
+        'erp.b3': { title: 'Guaranteed compliance', detail: 'Protheus is continuously updated to meet Brazilian fiscal and tax obligations — SPED, NFe, NFSe and other accessory obligations. This ensures the company stays compliant with current legislation without manual effort from the team.' },
+        'erp.b4': { title: 'Data synchronized with WMS', detail: 'Physical movements recorded in WMS automatically reflect in Protheus, updating the accounting stock, costs, and invoices in real time. No manual entries between the two systems are needed — the integration is fully automatic.' },
+        'vn.b1':  { title: 'Simple registration and onboarding', detail: 'Registration on VIA NEXXUS is fully digital — the driver or carrier submits required documents through the platform and receives approval quickly, without needing to visit any office in person. The process is fast, secure, and accessible from any device.' },
+        'vn.b2':  { title: 'Receive and send freight proposals', detail: 'The platform connects those with available cargo to qualified drivers and carriers in real time. Proposals arrive directly on screen with all details — origin, destination, value, and deadline — and the driver can accept or negotiate without intermediaries.' },
+        'vn.b3':  { title: 'Integrated with NEXUS OFFER app', detail: 'VIA NEXXUS connects to the NEXUS OFFER mobile app, allowing drivers to receive and respond to proposals from anywhere. Full mobility — operations never stop due to lack of communication, even when the driver is on the road.' },
+        'vn.b4':  { title: 'More autonomy for carriers', detail: 'Partner carriers can manage their own loads, accept or decline shipments, and track their operations history directly through the platform. Less dependence on intermediaries means more agility in negotiations and more control over their own schedule.' },
+      }
+    }
+  };
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('onboarding-lang', lang);
+    document.getElementById('lang-pt').classList.toggle('lang-active', lang === 'pt');
+    document.getElementById('lang-en').classList.toggle('lang-active', lang === 'en');
+    const t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-modal-key]').forEach(el => {
+      const key = el.getAttribute('data-modal-key');
+      const m = t.modals[key];
+      if (m) el.querySelector('.bullet-exp-header span').textContent = m.title;
+    });
+    // Toast notification
+    presentToast.textContent = lang === 'pt' ? 'Idioma: Português' : 'Language: English';
+    presentToast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => presentToast.classList.remove('show'), 1800);
+  }
+
+  function triggerBulletModal(el) {
+    const key = el.getAttribute('data-modal-key');
+    const m = translations[currentLang].modals[key];
+    if (m) openBulletModal(m.title, m.detail);
   }
 
   function openBulletModal(title, detail) {
@@ -2123,6 +2384,7 @@
 
   /* ── INIT ── */
   updateUI();
+  if (currentLang !== 'pt') setLang(currentLang);
 </script>
 
 <div id="progress-bar"></div>
@@ -2130,23 +2392,23 @@
 <div id="fs-prompt">
   <div id="fs-prompt-box">
     <div id="fs-prompt-icon"><i class="fas fa-expand"></i></div>
-    <div id="fs-prompt-title">Ativar Tela Cheia</div>
-    <div id="fs-prompt-sub">
+    <div id="fs-prompt-title" data-i18n="fs.title">Ativar Tela Cheia</div>
+    <div id="fs-prompt-sub" data-i18n="fs.sub">
       Para a melhor experiência durante o onboarding, recomendamos visualizar em <strong>tela cheia</strong>.<br>Isso evita quebras de layout e garante que tudo seja exibido corretamente.
     </div>
-    <button id="fs-btn-enter" onclick="enterFullscreenAndStart()">
+    <button id="fs-btn-enter" onclick="enterFullscreenAndStart()" data-i18n="fs.enter">
       <i class="fas fa-expand"></i> Entrar em Tela Cheia
     </button>
     <br>
-    <button id="fs-btn-skip" onclick="dismissFsPrompt()">Continuar sem tela cheia</button>
+    <button id="fs-btn-skip" onclick="dismissFsPrompt()" data-i18n="fs.skip">Continuar sem tela cheia</button>
   </div>
 </div>
 
 <div id="splash">
   <img id="splash-logo" src="logos/LOGO ROXO COMANDO.png" alt="Comando Log" />
-  <div id="splash-welcome">Seja bem-vindo ao<br>Onboarding Interativo</div>
+  <div id="splash-welcome" data-i18n="splash.welcome">Seja bem-vindo ao<br>Onboarding Interativo</div>
   <div id="splash-divider"></div>
-  <div id="splash-label">Sistemas Comando Log</div>
+  <div id="splash-label" data-i18n="splash.label">Sistemas Comando Log</div>
 </div>
 
 <div id="truck-wrap">
