@@ -831,6 +831,9 @@
 
       /* ── Slides detalhe: ocupa 100% da largura ── */
       .detail-slide .left-col { padding-right: 0 !important; }
+      .detail-slide .right-col { display: flex !important; justify-content: center !important; width: 100% !important; }
+      .detail-slide .right-col .img-wrap { width: 100% !important; max-height: 220px !important; border-radius: 12px !important; overflow: hidden !important; }
+      .detail-slide .right-col .img-wrap img { width: 100% !important; height: 220px !important; object-fit: cover !important; }
 
       /* ── Bullet modal ── */
       .modal-card { width: 95% !important; max-width: 100% !important; }
@@ -1005,7 +1008,6 @@
     }
     @media (max-width: 900px) {
       .slide-inner.split { grid-template-columns: 1fr; }
-      .detail-slide .right-col { display: none; }
       #slide-1 .right-col { display: none; }
     }
     @media (max-width: 650px) {
