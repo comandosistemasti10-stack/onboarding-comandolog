@@ -745,39 +745,122 @@
 
     /* ─── MOBILE RESPONSIVE ─── */
     @media (max-width: 768px) {
+
+      /* ── Base layout ── */
       .slide-inner {
         flex-direction: column !important;
-        padding: 20px 18px 60px !important;
-        gap: 24px !important;
-        overflow-y: auto;
+        padding: 80px 18px 110px !important;
+        gap: 20px !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        height: 100% !important;
       }
-      .slide-inner[style*="grid"] {
-        display: flex !important;
-        flex-direction: column !important;
-      }
-      .left-col, .right-col { flex: unset !important; width: 100% !important; }
-      .split { flex-direction: column !important; gap: 24px !important; }
-      h1.hero { font-size: clamp(36px, 10vw, 52px) !important; }
-      h2.section-title { font-size: clamp(28px, 8vw, 40px) !important; }
-      #slide-3 h2.section-title, #slide-8 h2.section-title { font-size: clamp(32px, 9vw, 48px) !important; }
-      .system-title { font-size: clamp(28px, 8vw, 40px) !important; }
-      .capa-img-wrap { max-height: 220px !important; }
-      .net-diagram { display: none; }
-      .sys-card-v2 { min-width: unset; }
-      #global-logo img { height: 24px !important; }
-      .btn-group { flex-wrap: wrap; gap: 10px !important; }
+      .slide-inner[style*="grid"] { display: flex !important; flex-direction: column !important; }
+      .left-col, .right-col { flex: unset !important; width: 100% !important; max-width: 100% !important; }
+      .split { flex-direction: column !important; gap: 20px !important; }
+
+      /* ── Fixed UI ── */
+      #lang-switcher { right: 28px; }
+      #fullscreen-btn, #present-btn { display: none !important; }
+      #global-logo { top: 12px !important; left: 14px !important; }
+      #global-logo img { height: 22px !important; }
+
+      /* ── Caminhão ── */
+      #truck-wrap { height: 56px !important; }
+      .truck-mover { bottom: 8px !important; }
+      .truck-mover img { height: 36px !important; }
+
+      /* ── Dots ── */
+      #dots { bottom: 56px !important; gap: 5px !important; }
+      .dot-indicator { width: 5px !important; height: 5px !important; }
+      .dot-indicator.active { width: 16px !important; }
+
+      /* ── Footer strip ── */
+      .footer-strip { padding: 0 18px !important; height: 42px !important; }
+      .footer-strip span { font-size: 10px !important; letter-spacing: 1px !important; }
+
+      /* ── Tipografia ── */
+      h1.hero { font-size: clamp(28px, 8vw, 40px) !important; letter-spacing: -0.5px !important; }
+      h2.section-title { font-size: clamp(24px, 7vw, 32px) !important; letter-spacing: -0.5px !important; }
+      h3.system-title { font-size: clamp(24px, 7vw, 32px) !important; }
+      .subtitle { font-size: 14px !important; margin-bottom: 20px !important; }
+      .tag { font-size: 11px !important; padding: 4px 12px !important; margin-bottom: 12px !important; }
+      .divider { margin-bottom: 16px !important; }
+      .badge { font-size: 11px !important; }
+
+      /* ── Eco highlights ── */
+      .eco-highlight { font-size: 13px !important; padding: 9px 13px !important; gap: 10px !important; }
+
+      /* ── Bullets ── */
+      .bullets { gap: 10px !important; }
+      .bullets li { font-size: 13px !important; padding: 11px 14px !important; gap: 10px !important; }
+
+      /* ── Buttons ── */
+      .btn-group { flex-wrap: wrap; gap: 8px !important; margin-top: 16px !important; }
       .btn-primary, .btn-secondary, .btn-dark { font-size: 12px !important; padding: 10px 16px !important; }
+
+      /* ── Slide 1: capa ── */
+      #slide-1 .slide-inner { padding-top: 16px !important; padding-bottom: 110px !important; }
+      #s1-logo { position: relative !important; top: auto !important; left: auto !important; margin-bottom: 16px !important; }
+      #s1-logo img { height: 60px !important; }
+      #s1-content { margin-top: 0 !important; }
       #slide-1 .btn-primary { font-size: 14px !important; padding: 13px 24px !important; }
-      .footer-strip span { font-size: 11px !important; letter-spacing: 1.5px !important; }
-      .subtitle { font-size: 14px !important; }
-      .eco-highlight { font-size: 14px !important; }
-      #slide-3 .eco-highlight, #slide-8 .eco-highlight { font-size: 15px !important; }
-      .bullets li { font-size: 13px !important; }
-      #fullscreen-btn, #present-btn { display: none; }
+      .capa-img-wrap { max-height: 180px !important; border-radius: 12px !important; }
+      #slide-1 .hero-kicker { font-size: 14px !important; margin-top: 10px !important; }
+
+      /* ── Slide 2: ecossistema ── */
+      .net-diagram { display: none !important; }
+      #slide-2 .slide-inner { gap: 16px !important; }
+
+      /* ── Stat cards ── */
+      .stat-num { font-size: 28px !important; }
+
+      /* ── Slides 3 e 8: hubs ── */
+      .sys-card-v2 { min-width: unset !important; }
+      .sys-card-name { font-size: 16px !important; }
+      .sys-card-desc { font-size: 13px !important; }
+      .sys-card-body { padding: 12px 14px 14px !important; }
+      .sys-card-cta { margin-top: 10px !important; padding: 9px 14px !important; font-size: 12px !important; }
+      /* remove padding-bottom inline do right-col slide-3 */
+      #slide-3 .slide-inner > div:last-child { padding-bottom: 0 !important; }
+
+      /* ── Slide 8: sistemas externos ── */
+      #slide-8 .slide-inner { padding-top: 72px !important; }
+
+      /* ── Slides detalhe: ocupa 100% da largura ── */
+      .detail-slide .left-col { padding-right: 0 !important; }
+
+      /* ── Bullet modal ── */
+      .modal-card { width: 95% !important; max-width: 100% !important; }
+      .modal-mtitle { font-size: 18px !important; }
+      .modal-mbody { font-size: 14px !important; padding: 18px 20px 24px !important; }
+      .modal-mheader { padding: 18px 20px 14px !important; }
+
+      /* ── Slide 11: final ── */
+      #slide-11 .content-area { grid-template-columns: 1fr !important; gap: 20px !important; }
+      #slide-11 .closing-note { max-width: 100% !important; font-size: 14px !important; }
+      .contact-card { padding: 14px 16px !important; gap: 14px !important; }
+      .contact-card .contact-icon { width: 36px !important; height: 36px !important; font-size: 15px !important; flex-shrink: 0 !important; }
+      .contact-card .contact-info span { font-size: 13px !important; word-break: break-all; }
+
+      /* ── FS Prompt ── */
+      #fs-prompt-box { padding: 28px 24px 24px !important; }
+      #fs-prompt-title { font-size: 18px !important; }
+      #fs-prompt-sub { font-size: 13px !important; }
     }
+
     @media (max-width: 480px) {
-      h1.hero { font-size: 32px !important; }
-      .slide-inner { padding: 16px 14px 60px !important; }
+      .slide-inner { padding: 70px 14px 100px !important; }
+      #slide-1 .slide-inner { padding-top: 12px !important; }
+      h1.hero { font-size: 26px !important; }
+      h2.section-title { font-size: 22px !important; }
+      h3.system-title { font-size: 22px !important; }
+      #slide-1 .logo-mark img { height: 50px !important; }
+      .eco-highlight { font-size: 12px !important; padding: 8px 11px !important; }
+      .bullets li { font-size: 12px !important; padding: 10px 12px !important; }
+      .btn-primary, .btn-secondary, .btn-dark { font-size: 11px !important; padding: 9px 14px !important; }
     }
 
     /* ─── DOTS ─── */
@@ -924,7 +1007,6 @@
       .slide-inner.split { grid-template-columns: 1fr; }
       .detail-slide .right-col { display: none; }
       #slide-1 .right-col { display: none; }
-      #slide-8 .left-col { display: none; }
     }
     @media (max-width: 650px) {
       .slide-inner { padding: 40px 28px; }
@@ -1038,11 +1120,11 @@
     <div class="grid-lines"></div>
     <div class="slide-inner" style="display:flex;gap:40px;align-items:center;">
       <div class="left-col" style="display:flex; flex-direction:column; justify-content:flex-start; padding-top:0;">
-        <div class="logo-mark animate-1" style="margin-bottom:32px; position:absolute; top:36px; left:72px;">
+        <div class="logo-mark animate-1" id="s1-logo" style="margin-bottom:32px; position:absolute; top:36px; left:72px;">
           <img src="logos/LOGO ROXA NOVA.png" alt="Comando Log"
                style="height:110px; width:auto; object-fit:contain; display:block;" />
         </div>
-        <div style="margin-top:160px;">
+        <div id="s1-content" style="margin-top:160px;">
           <div class="hero-eyebrow animate-2" data-i18n="s1.eyebrow">ONBOARDING INTERATIVO</div>
           <h1 class="hero animate-3" data-i18n="s1.hero">SISTEMAS<br><span>COMANDO LOG</span></h1>
           <p class="hero-kicker animate-4" data-i18n="s1.kicker">Conheça cada sistema e sua função principal dentro do ecossistema logístico.</p>
@@ -1718,7 +1800,6 @@
         <div class="badge animate-1" data-i18n="badge.external"><i class="fas fa-circle-dot"></i> SISTEMA EXTERNO</div>
         <div style="display:flex; align-items:flex-end; gap:18px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">TOTVS WMS</h3>
-          <img src="logos/LOGO_TOTVS.png" alt="TOTVS" class="animate-2" style="height:68px; width:auto; object-fit:contain; flex-shrink:0; filter:brightness(0); margin-bottom:4px;" />
         </div>
         <p class="subtitle animate-3" style="margin-bottom:20px;" data-i18n="s9.subtitle">Gestão completa do armazém, do recebimento à expedição.</p>
         <div class="divider animate-3"></div>
@@ -1771,7 +1852,6 @@
         <div class="badge animate-1" data-i18n="badge.external"><i class="fas fa-circle-dot"></i> SISTEMA EXTERNO</div>
         <div style="display:flex; align-items:flex-end; gap:18px; flex-wrap:wrap;">
           <h3 class="system-title animate-2">TOTVS PROTHEUS</h3>
-          <img src="logos/LOGO_TOTVS.png" alt="TOTVS" class="animate-2" style="height:68px; width:auto; object-fit:contain; flex-shrink:0; filter:brightness(0); margin-bottom:4px;" />
         </div>
         <p class="subtitle animate-3" style="margin-bottom:20px;" data-i18n="s10.subtitle">A espinha dorsal financeira e fiscal da sua operação.</p>
         <div class="divider animate-3"></div>
