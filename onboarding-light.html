@@ -340,6 +340,84 @@
     .module-card-name { font-size: 13px; font-weight: 800; color: var(--text-primary); }
     .module-badge-pill { display: inline-flex; align-items: center; gap: 5px; background: rgba(123,45,184,0.12); border: 1px solid rgba(123,45,184,0.3); border-radius: 99px; padding: 3px 10px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-2); }
 
+    /* ─── SYSTEM MODAL (iframe) ─── */
+    #system-modal {
+      position: fixed; inset: 0; z-index: 500;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(10,4,20,0.72); backdrop-filter: blur(6px);
+    }
+    #system-modal.sm-open { display: flex; }
+    #system-modal-box {
+      width: 94vw; height: 90vh;
+      background: #fff; border-radius: 16px;
+      overflow: hidden; display: flex; flex-direction: column;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+      animation: splashPop 0.3s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    #system-modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      flex-shrink: 0;
+    }
+    #system-modal-title {
+      font-size: 15px; font-weight: 800; color: #fff;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+    }
+    #system-modal-actions { display: flex; align-items: center; gap: 8px; }
+    #system-modal-newtab {
+      background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3);
+      color: #fff; border-radius: 7px; padding: 5px 12px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1px;
+      cursor: pointer; display: flex; align-items: center; gap: 6px;
+      transition: background 0.2s;
+    }
+    #system-modal-newtab:hover { background: rgba(255,255,255,0.28); }
+    #system-modal-close {
+      background: rgba(255,255,255,0.18); border: none; color: #fff;
+      width: 32px; height: 32px; border-radius: 8px; cursor: pointer;
+      font-size: 15px; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    #system-modal-close:hover { background: rgba(255,255,255,0.35); }
+    #system-modal-frame-wrap {
+      flex: 1; position: relative; background: #f0f0f4;
+    }
+    #system-modal-iframe {
+      width: 100%; height: 100%; border: none; display: block;
+    }
+    #system-modal-loading {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 16px; background: #f4f4f6;
+      font-size: 14px; color: var(--accent); font-weight: 600;
+    }
+    #system-modal-loading .sm-spinner {
+      width: 40px; height: 40px; border: 3px solid rgba(123,45,184,0.2);
+      border-top-color: var(--accent); border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #system-modal-blocked {
+      position: absolute; inset: 0;
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      gap: 14px; padding: 40px; text-align: center; background: #f4f4f6;
+    }
+    #system-modal-blocked i { font-size: 40px; color: var(--accent-2); }
+    #system-modal-blocked p { font-size: 15px; color: var(--white-70); max-width: 340px; line-height: 1.6; }
+    #system-modal-blocked a {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; background: linear-gradient(135deg,var(--accent-2),var(--accent));
+      color: #fff; border-radius: 10px; font-size: 13px; font-weight: 800;
+      letter-spacing: 1px; text-decoration: none;
+      box-shadow: 0 4px 16px rgba(123,45,184,0.3);
+    }
+    @media (max-width: 768px) {
+      #system-modal-box { width: 100vw; height: 100vh; border-radius: 0; }
+      #system-modal-header { padding: 10px 14px; }
+    }
+
     /* ─── BULLET MODAL ─── */
     #bullet-modal {
       position: fixed; inset: 0; z-index: 300;
@@ -529,7 +607,7 @@
       display: flex; align-items: center; justify-content: center;
     }
     .img-wrap {
-      width: 100%; max-height: 520px;
+      width: 100%;
       border-radius: var(--radius);
       border: 1px solid var(--border-2);
       overflow: hidden;
@@ -538,7 +616,7 @@
     }
     .img-wrap img {
       width: 100%; height: 100%;
-      object-fit: cover; display: block;
+      object-fit: contain; display: block;
       transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
     }
     .img-wrap:hover img { transform: scale(1.04); }
@@ -832,8 +910,8 @@
       /* ── Slides detalhe: ocupa 100% da largura ── */
       .detail-slide .left-col { padding-right: 0 !important; }
       .detail-slide .right-col { display: flex !important; justify-content: center !important; width: 100% !important; }
-      .detail-slide .right-col .img-wrap { width: 100% !important; max-height: 220px !important; border-radius: 12px !important; overflow: hidden !important; }
-      .detail-slide .right-col .img-wrap img { width: 100% !important; height: 220px !important; object-fit: cover !important; }
+      .detail-slide .right-col .img-wrap { width: 100% !important; max-height: 280px !important; border-radius: 12px !important; overflow: hidden !important; }
+      .detail-slide .right-col .img-wrap img { width: 100% !important; height: auto !important; max-height: 280px !important; object-fit: contain !important; }
 
       /* ── Bullet modal ── */
       .modal-card { width: 95% !important; max-width: 100% !important; }
@@ -934,8 +1012,9 @@
 
     /* ─── SLIDES 4-7: DETAIL ─── */
     .detail-slide .slide-inner { align-items: center; }
+    .detail-slide .slide-inner { grid-template-columns: 1fr 1.6fr !important; }
     .detail-slide .left-col { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-right: 20px; }
-    .detail-slide .right-col { flex: 0.9; display: flex; align-items: center; justify-content: center; }
+    .detail-slide .right-col { flex: 1.6; display: flex; align-items: center; justify-content: center; }
 
     /* ─── SLIDE 2: ECOSSISTEMA ─── */
     #slide-2 .tag { font-size: 16px; padding: 7px 20px; letter-spacing: 3px; margin-bottom: 24px; }
@@ -1484,7 +1563,7 @@
           </li>
         </ul>
         <div class="btn-group animate-5">
-          <button class="btn-dark" data-i18n="btn.view.sys"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
+          <button class="btn-dark" onclick="openSystemModal('NEXUS','https://nexus.integralogis.net/')" data-i18n="btn.view.sys"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
           <button class="btn-secondary" onclick="goToSlide(2)" data-i18n="btn.back"><i class="fas fa-arrow-left"></i> VOLTAR</button>
         </div>
       </div>
@@ -1829,7 +1908,7 @@
         </div>
       </div>
       <div class="right-col animate-6">
-        <div class="img-wrap" style="height:420px;">
+        <div class="img-wrap">
           <img src="gifs/WMS_GIF.gif" alt="TOTVS WMS" style="width:100%; height:100%; object-fit:contain; display:block;" />
         </div>
       </div>
@@ -1881,7 +1960,7 @@
         </div>
       </div>
       <div class="right-col animate-6">
-        <div class="img-wrap" style="height:420px;">
+        <div class="img-wrap">
           <img src="gifs/ERP_GIF.gif" alt="TOTVS Protheus" style="width:100%; height:100%; object-fit:contain; display:block;" />
         </div>
       </div>
@@ -2344,6 +2423,48 @@
     if (m) openBulletModal(m.title, m.detail);
   }
 
+  /* ── SYSTEM MODAL ── */
+  let _sysUrl = '';
+  function openSystemModal(name, url) {
+    _sysUrl = url;
+    document.getElementById('system-modal-name').textContent = name;
+    document.getElementById('system-modal-blocked-link').href = url;
+    const iframe = document.getElementById('system-modal-iframe');
+    const loading = document.getElementById('system-modal-loading');
+    const blocked = document.getElementById('system-modal-blocked');
+    loading.style.display = 'flex';
+    blocked.style.display = 'none';
+    iframe.style.display = 'none';
+    iframe.src = '';
+    document.getElementById('system-modal').classList.add('sm-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      iframe.onload = () => {
+        loading.style.display = 'none';
+        iframe.style.display = 'block';
+      };
+      iframe.onerror = () => showBlocked();
+      iframe.src = url;
+      // fallback: se não carregar em 8s, mostra mensagem
+      setTimeout(() => {
+        if (loading.style.display !== 'none') showBlocked();
+      }, 8000);
+    }, 100);
+  }
+  function showBlocked() {
+    document.getElementById('system-modal-loading').style.display = 'none';
+    document.getElementById('system-modal-iframe').style.display = 'none';
+    document.getElementById('system-modal-blocked').style.display = 'flex';
+  }
+  function closeSystemModal() {
+    document.getElementById('system-modal').classList.remove('sm-open');
+    document.getElementById('system-modal-iframe').src = '';
+    document.body.style.overflow = '';
+  }
+  function openSystemNewTab() {
+    window.open(_sysUrl, '_blank');
+  }
+
   function openBulletModal(title, detail) {
     document.querySelector('.slide.active .bullet-exp:first-child .bullet-chevron')?.classList.add('pulsed');
     const modal = document.getElementById('bullet-modal');
@@ -2511,6 +2632,30 @@
   </div>
   <div class="truck-mover" style="animation-delay:50s;">
     <img src="CAMINHAO_3.png" alt="" />
+  </div>
+</div>
+
+<div id="system-modal" onclick="closeSystemModal()">
+  <div id="system-modal-box" onclick="event.stopPropagation()">
+    <div id="system-modal-header">
+      <div id="system-modal-title"><i class="fas fa-desktop"></i><span id="system-modal-name">Sistema</span></div>
+      <div id="system-modal-actions">
+        <button id="system-modal-newtab" onclick="openSystemNewTab()"><i class="fas fa-external-link-alt"></i> Nova aba</button>
+        <button id="system-modal-close" onclick="closeSystemModal()"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div id="system-modal-frame-wrap">
+      <div id="system-modal-loading">
+        <div class="sm-spinner"></div>
+        <span>Carregando sistema...</span>
+      </div>
+      <div id="system-modal-blocked">
+        <i class="fas fa-shield-alt"></i>
+        <p>Este sistema não permite abertura em janela incorporada por configurações de segurança.</p>
+        <a id="system-modal-blocked-link" href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Abrir em nova aba</a>
+      </div>
+      <iframe id="system-modal-iframe" src="" title="Sistema" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+    </div>
   </div>
 </div>
 
