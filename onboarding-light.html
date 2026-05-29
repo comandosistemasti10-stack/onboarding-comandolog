@@ -725,12 +725,13 @@
       border-radius: 8px; overflow: hidden;
     }
     #lang-switcher button {
-      padding: 0 11px; height: 36px; background: none; border: none;
-      cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 1px;
-      color: var(--white-70); font-family: inherit; transition: all 0.2s;
+      padding: 0 10px; height: 36px; background: none; border: none;
+      cursor: pointer; font-size: 18px; line-height: 1;
+      font-family: inherit; transition: all 0.2s;
+      opacity: 0.55;
     }
-    #lang-switcher button.lang-active { background: var(--accent); color: #fff; }
-    #lang-switcher button:hover:not(.lang-active) { background: var(--white-15); color: #fff; }
+    #lang-switcher button.lang-active { background: var(--accent); opacity: 1; }
+    #lang-switcher button:hover:not(.lang-active) { background: var(--white-15); opacity: 0.85; }
 
     /* ─── PROGRESS BAR ─── */
     #progress-bar {
@@ -1015,8 +1016,8 @@
 
 <div id="progress-bar"></div>
 <div id="lang-switcher">
-  <button id="lang-pt" onclick="setLang('pt')" class="lang-active">PT</button>
-  <button id="lang-en" onclick="setLang('en')">EN</button>
+  <button id="lang-pt" onclick="setLang('pt')" class="lang-active" title="Português">🇧🇷</button>
+  <button id="lang-en" onclick="setLang('en')" title="English">🇺🇸</button>
 </div>
 <button id="present-btn" title="Modo apresentação (P)"><i class="fas fa-tv"></i></button>
 <button id="fullscreen-btn" title="Tela cheia"><i class="fas fa-expand"></i></button>
@@ -1043,7 +1044,7 @@
         </div>
         <div style="margin-top:160px;">
           <div class="hero-eyebrow animate-2" data-i18n="s1.eyebrow">ONBOARDING INTERATIVO</div>
-          <h1 class="hero animate-3">SISTEMAS<br><span>COMANDO LOG</span></h1>
+          <h1 class="hero animate-3" data-i18n="s1.hero">SISTEMAS<br><span>COMANDO LOG</span></h1>
           <p class="hero-kicker animate-4" data-i18n="s1.kicker">Conheça cada sistema e sua função principal dentro do ecossistema logístico.</p>
           <div class="btn-group" style="margin-top:28px;">
             <button class="btn-primary" onclick="navigate(1)" data-i18n="s1.cta"><i class="fas fa-arrow-right"></i> COMEÇAR</button>
@@ -2023,6 +2024,7 @@
       'splash.welcome': 'Seja bem-vindo ao<br>Onboarding Interativo',
       'splash.label': 'Sistemas Comando Log',
       's1.eyebrow': 'ONBOARDING INTERATIVO',
+      's1.hero': 'SISTEMAS<br><span>COMANDO LOG</span>',
       's1.kicker': 'Conheça cada sistema e sua função principal dentro do ecossistema logístico.',
       's1.cta': '<i class="fas fa-arrow-right"></i> COMEÇAR',
       's1.footer': 'SISTEMAS LOGÍSTICOS INTEGRADOS',
@@ -2127,6 +2129,7 @@
       'splash.welcome': 'Welcome to the<br>Interactive Onboarding',
       'splash.label': 'Comando Log Systems',
       's1.eyebrow': 'INTERACTIVE ONBOARDING',
+      's1.hero': 'SYSTEMS<br><span>COMANDO LOG</span>',
       's1.kicker': 'Discover each system and its key role within the logistics ecosystem.',
       's1.cta': '<i class="fas fa-arrow-right"></i> GET STARTED',
       's1.footer': 'INTEGRATED LOGISTICS SYSTEMS',
