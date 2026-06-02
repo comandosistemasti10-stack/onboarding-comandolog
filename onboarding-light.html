@@ -1015,6 +1015,11 @@
     .detail-slide .slide-inner { grid-template-columns: 1fr 1.6fr !important; }
     .detail-slide .left-col { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-right: 20px; }
     .detail-slide .right-col { flex: 1.6; display: flex; align-items: center; justify-content: center; }
+    /* NEXUS e RESERVE: GIF máximo sem quebrar texto */
+    #slide-4 .slide-inner, #slide-5 .slide-inner { grid-template-columns: minmax(300px, 0.85fr) 2.2fr !important; }
+    #slide-4 .right-col, #slide-5 .right-col { flex: 2.2; align-items: stretch; }
+    #slide-4 .img-wrap, #slide-5 .img-wrap { width: 100%; height: 100%; }
+    #slide-4 .img-wrap img, #slide-5 .img-wrap img { width: 100%; height: 100%; object-fit: contain; }
 
     /* ─── SLIDE 2: ECOSSISTEMA ─── */
     #slide-2 .tag { font-size: 16px; padding: 7px 20px; letter-spacing: 3px; margin-bottom: 24px; }
