@@ -1887,7 +1887,7 @@
             <div class="sys-card-desc" data-i18n="s8.wms.desc">Gestão completa do armazém, do recebimento à expedição com rastreabilidade total.</div>
             <ul style="margin:8px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:5px;">
               <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.wms.b1"> Controle de endereçamento e inventário</span></li>
-              <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.wms.b2"> Rastreabilidade em tempo real</span></li>
+               <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.wms.b2"> Troca de titularidade</span></li>
               <li style="font-size:15px; color:var(--white-70); display:flex; align-items:center; gap:8px;"><i class="fas fa-check-circle" style="color:var(--accent-3); font-size:14px; flex-shrink:0;"></i><span data-i18n="s8.wms.b3"> Integração com expedição e recebimento</span></li>
             </ul>
             <div class="sys-card-cta" data-i18n="s3.cta">CONHECER <i class="fas fa-arrow-right"></i></div>
@@ -1977,6 +1977,10 @@
           <li class="bullet-exp" data-modal-key="wms.b4" onclick="triggerBulletModal(this)">
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Integrado ao TOTVS Protheus</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
+          </li>
+          <li class="bullet-exp" data-modal-key="wms.b5" onclick="triggerBulletModal(this)">
+            <div class="bullet-icon"><i class="fas fa-check"></i></div>
+            <div style="flex:1;"><div class="bullet-exp-header"><span>Troca de titularidade</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
         </ul>
         <div class="btn-group animate-5">
@@ -2311,7 +2315,7 @@
       's8.int.btn': '<i class="fas fa-laptop-code"></i> INTERNOS',
       's8.conclude.btn': '<i class="fas fa-flag-checkered"></i> CONCLUIR',
       's8.wms.tag': 'Armazém', 's8.wms.desc': 'Gestão completa do armazém, do recebimento à expedição com rastreabilidade total.',
-      's8.wms.b1': ' Controle de endereçamento e inventário', 's8.wms.b2': ' Rastreabilidade em tempo real', 's8.wms.b3': ' Integração com expedição e recebimento',
+       's8.wms.b1': ' Controle de endereçamento e inventário', 's8.wms.b2': ' Troca de titularidade sem movimentação física', 's8.wms.b3': ' Integração com expedição e recebimento',
       's8.erp.tag': 'ERP Financeiro', 's8.erp.desc': 'A espinha dorsal financeira, fiscal e contábil da operação integrada.',
       's8.erp.b1': ' Gestão financeira e fiscal completa', 's8.erp.b2': ' Módulos contábeis e de RH integrados', 's8.erp.b3': ' Relatórios e dashboards gerenciais',
       's8.vn.tag': 'Fretes', 's8.vn.desc': 'Plataforma de ofertas de carga para motoristas e transportadoras em tempo real.',
@@ -2353,6 +2357,7 @@
         'wms.b2': { title: 'Rastreabilidade total', detail: 'Cada movimentação dentro do armazém — entrada, transferência interna, separação e saída — é registrada com data, hora e responsável. O histórico completo de qualquer item fica disponível para consulta a qualquer momento, facilitando auditorias e resolução de divergências.' },
         'wms.b3': { title: 'Redução de erros operacionais', detail: 'O sistema alerta em tempo real quando uma divergência é detectada — produto errado, quantidade incorreta ou endereço inválido. Isso evita que erros cheguem ao cliente e reduz significativamente o retrabalho das equipes, gerando economia e mais confiabilidade nas entregas.' },
         'wms.b4': { title: 'Integrado ao TOTVS Protheus', detail: 'O WMS e o Protheus trabalham de forma sincronizada: enquanto o WMS controla a parte física do estoque no armazém, o Protheus registra os impactos financeiros e fiscais. Qualquer movimentação física gera automaticamente os lançamentos contábeis correspondentes, sem intervenção manual.' },
+        'wms.b5': { title: 'Troca de titularidade', detail: 'Quando um CD vende produtos para clientes terceiros, o WMS registra a transferência de responsabilidade sem movimentação física. O pagador que cobrir a armazenagem decide, sem movimentar fisicamente o produto, e o AG emite automaticamente uma nota fiscal de armazenagem para comprovação, enquanto o CD emite nota de venda, garantindo total transparência e controle operacional.' },
         'erp.b1': { title: 'Financeiro, fiscal e contábil', detail: 'O Protheus centraliza todas as operações financeiras, fiscais e contábeis da empresa em um único ERP. Contas a pagar, contas a receber, emissão de notas fiscais e lançamentos contábeis são gerenciados de forma integrada e automatizada, eliminando planilhas paralelas e retrabalho.' },
         'erp.b2': { title: 'Controle de compras e vendas', detail: 'Todo o ciclo de compras — da solicitação ao pagamento — e o ciclo de vendas são gerenciados pelo Protheus, com rastreabilidade completa de cada transação. A integração direta com o estoque garante que os dados financeiros reflitam sempre a realidade operacional.' },
         'erp.b3': { title: 'Conformidade garantida', detail: 'O Protheus é continuamente atualizado para atender às obrigações fiscais e tributárias brasileiras — SPED, NFe, NFSe e demais obrigações acessórias. Isso garante que a empresa permaneça em conformidade com a legislação vigente sem esforço manual da equipe.' },
@@ -2426,7 +2431,7 @@
       's8.int.btn': '<i class="fas fa-laptop-code"></i> INTERNAL',
       's8.conclude.btn': '<i class="fas fa-flag-checkered"></i> FINISH',
       's8.wms.tag': 'Warehouse', 's8.wms.desc': 'Complete warehouse management, from receiving to shipping with full traceability.',
-      's8.wms.b1': ' Address control and inventory management', 's8.wms.b2': ' Real-time traceability', 's8.wms.b3': ' Integration with shipping and receiving',
+       's8.wms.b1': ' Address control and inventory management', 's8.wms.b2': ' Ownership transfer', 's8.wms.b3': ' Integration with shipping and receiving',
       's8.erp.tag': 'Financial ERP', 's8.erp.desc': 'The financial, fiscal, and accounting backbone of the integrated operation.',
       's8.erp.b1': ' Complete financial and fiscal management', 's8.erp.b2': ' Integrated accounting and HR modules', 's8.erp.b3': ' Reports and management dashboards',
       's8.vn.tag': 'Freight', 's8.vn.desc': 'Real-time freight proposal platform for drivers and carriers.',
