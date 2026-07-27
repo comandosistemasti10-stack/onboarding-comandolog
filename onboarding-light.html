@@ -1978,10 +1978,10 @@
             <div class="bullet-icon"><i class="fas fa-check"></i></div>
             <div style="flex:1;"><div class="bullet-exp-header"><span>Integrado ao TOTVS Protheus</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
           </li>
-          <li class="bullet-exp" data-modal-key="wms.b5" onclick="triggerBulletModal(this)">
-            <div class="bullet-icon"><i class="fas fa-check"></i></div>
-            <div style="flex:1;"><div class="bullet-exp-header"><span>Troca de titularidade</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
-          </li>
+           <li class="bullet-exp" data-modal-key="wms.b5" onclick="triggerBulletModal(this)">
+             <div class="bullet-icon"><i class="fas fa-check"></i></div>
+             <div style="flex:1;"><div class="bullet-exp-header"><span data-i18n="wms.b5">Troca de titularidade</span><i class="fas fa-info-circle bullet-chevron"></i></div></div>
+           </li>
         </ul>
         <div class="btn-group animate-5">
           <button class="btn-dark" data-i18n="btn.view.sys"><i class="fas fa-external-link-alt"></i> VISUALIZAR SISTEMA</button>
@@ -2435,7 +2435,10 @@
       's8.erp.tag': 'Financial ERP', 's8.erp.desc': 'The financial, fiscal, and accounting backbone of the integrated operation.',
       's8.erp.b1': ' Complete financial and fiscal management', 's8.erp.b2': ' Integrated accounting and HR modules', 's8.erp.b3': ' Reports and management dashboards',
       's8.vn.tag': 'Freight', 's8.vn.desc': 'Real-time freight proposal platform for drivers and carriers.',
-      's8.vn.b1': ' Simple registration and onboarding with digital documents', 's8.vn.b2': ' Real-time freight proposals', 's8.vn.b3': ' Integrated with NEXUS OFFER app',
+      's8.vn.b1': ' Simple registration and onboarding with digital documents',
+      's8.vn.b2': ' Real-time freight proposals',
+      's8.vn.b3': ' Integrated with NEXUS OFFER app',
+      's8.wms.b5': ' Ownership transfer',
       's8.footer': '3 EXTERNAL SYSTEMS',
       's9.subtitle': 'Complete warehouse management, from receiving to shipping.',
       's9.footer': 'TOTVS WMS — EXTERNAL SYSTEM',
@@ -2473,6 +2476,7 @@
         'wms.b2': { title: 'Full traceability', detail: 'Every movement within the warehouse — receipt, internal transfer, picking, and shipping — is recorded with date, time, and responsible person. The complete history of any item is available for consultation at any time, facilitating audits and resolving discrepancies.' },
         'wms.b3': { title: 'Reduction of operational errors', detail: 'The system alerts in real time when a discrepancy is detected — wrong product, incorrect quantity, or invalid address. This prevents errors from reaching the customer and significantly reduces rework, generating savings and greater reliability in deliveries.' },
         'wms.b4': { title: 'Integrated with TOTVS Protheus', detail: 'WMS and Protheus work in sync: while WMS controls the physical stock in the warehouse, Protheus records the financial and fiscal impacts. Any physical movement automatically generates the corresponding accounting entries, without manual intervention.' },
+        'wms.b5': { title: 'Ownership transfer', detail: 'When a CD sells products to third-party customers, WMS records the transfer of responsibility without physical movement. The payer who covers storage decides without physically moving the product, and AG automatically generates a storage invoice for proof, while CD generates a sales invoice, ensuring full transparency and control over the operation.' },
         'erp.b1': { title: 'Financial, fiscal, and accounting', detail: 'Protheus centralizes all financial, fiscal, and accounting operations in a single ERP. Accounts payable, receivable, invoice issuance, and accounting entries are managed in an integrated and automated way, eliminating parallel spreadsheets and rework.' },
         'erp.b2': { title: 'Purchase and sales control', detail: 'The entire purchasing cycle — from request to payment — and the sales cycle are managed by Protheus, with full traceability of each transaction. Direct integration with inventory ensures financial data always reflects operational reality.' },
         'erp.b3': { title: 'Guaranteed compliance', detail: 'Protheus is continuously updated to meet Brazilian fiscal and tax obligations — SPED, NFe, NFSe and other accessory obligations. This ensures the company stays compliant with current legislation without manual effort from the team.' },
